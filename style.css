@@ -74,5 +74,5 @@ blockquote p{margin:0}
 .ph{margin:1.2rem 0 1.6rem;background:#F8F2E6;border-radius:14px;padding:.4rem}
 .ph img{display:block;width:100%;height:auto;mix-blend-mode:multiply}
 .ph figcaption{font-size:.82rem;padding:.3rem .6rem .2rem;color:#5A4636}
-.hero-ph{margin-top:2.4rem}
+.hero-ph{margin-top:2.4rem;max-width:36rem}
 .feature .ph,.cal .ph{max-width:46rem}
