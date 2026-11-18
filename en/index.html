@@ -838,7 +838,7 @@ function swapPlates() {
   });
 }
 function hand(t) { return t ? `<span class="hand">${esc(t)}</span>` : ''; }
-function quote(t, src) { return `<blockquote class="quote">“${t}“${src ? `<cite>${src}</cite>` : ''}</blockquote>`; }
+function quote(t, src) { return `<blockquote class="quote">“${t}”${src ? `<cite>${src}</cite>` : ''}</blockquote>`; }
 function eb(t) { return `<span class="eyebrow">${t}</span>`; }
 function cardList(arr, o = {}) {
   return `<div class="grid ${o.cols || 'auto'}">${arr.map(c => `<div class="card ${o.cls || ''}">${o.num ? `<span class="st-num">${String(arr.indexOf(c) + 1).padStart(2, '0')}</span>` : ''}<h3>${String(c[0])}</h3><p>${c[1] || ''}</p></div>`).join('')}</div>`;
@@ -1703,7 +1703,7 @@ async function vKoken(sub) {
       <div>${plate('vw_fruit')}<div style="margin-top:24px">${plate('vw_herbs')}</div></div></div></section>
      <section style="padding-top:0">${eb('The spice rack')}<div class="herb">${['vw_n_rosmarin', 'vw_n_dragon', 'vw_n_fankal', 'vw_n_gurkort', 'vw_n_isop', 'vw_n_citronverbena', 'vw_n_kungsmynta', 'vw_n_stappsalvia', 'vw_n_spanskkorvel'].map(k => plate(k, { mini: 1 })).join('')}</div></section>
      <section style="padding-top:0"><div class="twocol"><div>${photo('samvaro-brodet.jpg', 'Hands break bread at the long table')}</div>
-      <div>${eb('The cookbook')}<h2>Thirty meals</h2><p class="lead">A cookbook is not a law. What matters is that someone says "come and sit down".</p><a class="btn btn-primary" href="#koken-maltider">Browse the meals ${ARR}</a>${hand('Come and sit down.')}</div></div>
+      <div>${eb('The cookbook')}<h2>Thirty meals</h2><p class="lead">A cookbook is not a law. What matters is that someone says “come and sit down”.</p><a class="btn btn-primary" href="#koken-maltider">Browse the meals ${ARR}</a>${hand('Come and sit down.')}</div></div>
       <p class="quote" style="margin-top:36px">“It is not the food the guests remember, but how they felt sitting at the table.”<cite>The Kitchens, afterword</cite></p></section></div>`;
   }
   return head + subnav('koken', subs, sub || '') + body + nextRoom('koken');
