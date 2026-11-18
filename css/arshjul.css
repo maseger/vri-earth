@@ -1,0 +1,59 @@
+/* ÅRSHJUL START – Årshjulet på startsidan (js/arshjul.js). Bygger på sajtens tokens och säsongsytor (--g, --t, --e). */
+.aj{padding-block:56px}
+.aj-g{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center}
+.aj-w{min-width:0}
+.aj-svg{display:block;width:100%;height:auto;overflow:visible;font-family:var(--sans)}
+.aj-disc{fill:var(--g)}
+.aj-rim{fill:none;stroke:var(--t);stroke-width:1.5}
+.aj-seg{cursor:pointer}
+.aj-p{stroke:var(--t);stroke-width:1.25;stroke-linejoin:round}
+.aj-seg.on .aj-p{stroke-width:3.5}
+.aj-seg:hover .aj-p{stroke-width:2.5}
+.aj-seg.on:hover .aj-p{stroke-width:3.5}
+.aj-ab{font:600 16px/1 var(--sans);letter-spacing:.02em;pointer-events:none}
+.aj-f{fill:var(--g);stroke:var(--t);stroke-width:2}
+.aj-f.fx{fill:var(--t)}
+.aj-fl{font:500 13px/1 var(--sans);fill:var(--t);paint-order:stroke;stroke:var(--g);stroke-width:5px;stroke-linejoin:round}
+.aj-now .u{stroke:#F8F2E6;stroke-width:6;stroke-linecap:round}
+.aj-now .o{stroke:#1C1B17;stroke-width:2.5;stroke-linecap:round}
+.aj-now .tip{fill:#1C1B17;stroke:#F8F2E6;stroke-width:2;paint-order:stroke;stroke-linejoin:round}
+.aj-now,.aj-c,.aj-fests,.aj-focus,.aj-abs{pointer-events:none}
+.aj-cd{fill:var(--g);stroke:var(--t);stroke-width:1}
+.aj-cm{font:italic 400 22px/1 var(--serif);fill:var(--t)}
+.aj-cn{font:600 11px/1 var(--sans);letter-spacing:.16em;fill:var(--e)}
+.aj-ct{font:400 12px/1 var(--sans);fill:var(--t)}
+.aj-focus{fill:none;stroke:none}
+.aj-focus.on.h{stroke:rgba(20,38,31,.85);stroke-width:9;stroke-linejoin:round}
+.aj-focus.on.r{stroke:var(--t);stroke-width:3.5;stroke-linejoin:round}
+.aj-leg{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:center;width:fit-content;max-width:100%;margin:10px auto 0;padding:6px 14px;border-radius:var(--r-pill);background:var(--g);color:var(--t)}
+.aj-leg span{display:inline-flex;align-items:center;gap:6px}
+.aj-dot{display:inline-block;flex:none;width:11px;height:11px;border-radius:50%;border:2px solid var(--t);background:var(--g)}
+.aj-dot.fx{background:var(--t)}
+.aj-tick{display:inline-block;width:3px;height:14px;background:#1C1B17;box-shadow:0 0 0 2px #F8F2E6;border-radius:2px}
+.aj-pane{background:var(--g);color:var(--t);border:1px solid color-mix(in srgb,var(--t) 28%,transparent);border-radius:var(--r-lg);padding:28px}
+.aj-pane h2{margin-bottom:.4em}
+.aj-pane p{color:var(--t)}
+.aj-hint{opacity:1}
+.aj-card{margin-top:18px;padding-top:18px;border-top:1px solid color-mix(in srgb,var(--t) 35%,transparent)}
+.aj-k{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:600 12px/16px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--e);margin:0 0 8px}
+.aj .aj-k{color:var(--e)}
+.aj-tag{font:600 11px/16px var(--sans);letter-spacing:.06em;text-transform:none;color:var(--t);border:1px solid var(--t);border-radius:var(--r-pill);padding:1px 9px}
+.aj-sub{font-size:21px;line-height:1.3;margin:0 0 8px}
+.aj-txt{margin-bottom:12px}
+.aj-fest{display:flex;gap:10px;align-items:baseline;margin:0 0 10px}
+.aj-fest .aj-dot{transform:translateY(1px)}
+.aj-go{margin:4px 0 0}
+.aj-hem{margin-top:22px;padding-top:20px;border-top:1px solid color-mix(in srgb,var(--t) 35%,transparent)}
+.aj-hem h3{margin-bottom:6px}
+.aj-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:4px}
+.aj .aj-btn{background:var(--t);color:var(--g);border-color:var(--t)}
+.aj .aj-btn:hover{background:var(--g);color:var(--t)}
+.aj [data-aj-status]:empty{display:none}
+.aj [data-aj-status]{margin:12px 0 0}
+@media (prefers-reduced-motion:no-preference){
+  .aj{transition:background-color .35s ease-out}
+  .aj-p{transition:d .25s ease-out,stroke-width .15s ease-out}
+}
+@media (max-width:900px){.aj-g{grid-template-columns:minmax(0,1fr);gap:28px}.aj-w{max-width:560px;margin-inline:auto;width:100%}}
+@media (max-width:640px){.aj{padding-block:40px}.aj-fl{display:none}.aj-pane{padding:20px}.aj-ab{font-size:17px}}
+/* ÅRSHJUL SLUT */
