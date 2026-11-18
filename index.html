@@ -2322,7 +2322,7 @@ async function sparaFil(filename, data) {
 }
 document.addEventListener('click', e => {
   const a = e.target.closest && e.target.closest('a[download]');
-  if (!a) return;
+  if (!a || /^blob:/.test(a.getAttribute('href') || '')) return; // blob-länkar laddas ned direkt (annars anropar sparaFil sig själv i en slinga)
   e.preventDefault();
   const h = a.getAttribute('href') || ''; const i = h.indexOf(',');
   sparaFil(a.getAttribute('download') || 'vreta.ics', decodeURIComponent(h.slice(i + 1)));
