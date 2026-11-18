@@ -313,6 +313,18 @@ picture{display:contents}
 .plate h3{margin:14px 0 2px;font-size:18px}
 .plate .lat{font:italic 400 15px/22px var(--serif);color:var(--text-muted);margin:0 0 8px}
 .plate .lat.rak{font-style:normal;font-family:var(--sans);font-size:13px}
+/* motivtext: gravyrplanschens bildtext, centrerad direkt under bilden */
+.plate .pl-cap{text-align:center;padding:10px 8px 12px;margin:0 0 8px}
+.plate .pl-cap::before{content:"";display:block;width:36px;height:1px;margin:0 auto 9px;background:currentColor;opacity:.45}
+.plate .pl-cap h3{margin:0;font:italic 400 21px/1.25 var(--serif);letter-spacing:.005em;color:var(--pl-ink,var(--text-body))}
+.plate .pl-cap .pl-l{margin:4px 0 0;font:400 12.5px/18px var(--sans);letter-spacing:.06em;color:var(--pl-ink2,var(--text-muted))}
+.plate.mini .pl-cap{padding:8px 4px 6px;margin-bottom:4px}
+.plate.mini .pl-cap::before{width:24px;margin-bottom:7px}
+.plate.mini .pl-cap h3,.herb .plate .pl-cap h3{font-size:16px;margin:0}
+.plate.mini .pl-cap .pl-l{font-size:11.5px;line-height:16px;letter-spacing:.04em}
+.plate[data-g="dag"] .pl-cap{--pl-ink:#2B3A31;--pl-ink2:#5A4636}
+.plate .pl-cap .pl-l.lat-i{font:italic 400 15px/20px var(--serif);letter-spacing:0}
+.plate.mini .pl-cap .pl-l.lat-i{font-size:13.5px;line-height:18px}
 .plate .pt{font-size:14px;line-height:22px;margin:0 0 8px}
 .plate figcaption{font-size:12px;line-height:18px}
 .plate .warn{display:inline-block;font:600 12px/16px var(--sans);color:var(--text-heading);border:1px solid currentColor;border-radius:var(--r-pill);padding:2px 9px;margin:0 0 8px}
@@ -800,11 +812,11 @@ function plate(k, o = {}) {
   if (o.title) t = o.title;
   const kick = k.indexOf('en_') >= 0 ? 'Reference page' : 'Plate';
   const mode = plMode(o.ground);
-  const latIsName = isLatin(l);
+  const latIsName = isLatin(l) && !/\b(and|for|of|the|in|from|with|to|on|by|at|is|are|a|an)\b/.test(l.split(/[–—]/)[0]);
   const body = o.mini ? '' : (o.text !== false && x ? `<p class="pt">${esc(x)}</p>` : '');
   const inner = `<span class="kick">${kick}${p.m ? ' · ' + esc(p.m) : ''}</span>
     <img src="${plFile(k, mode, alt)}" ${o.mini ? `srcset="${plThumb(plFile(k, mode, alt))} 440w, ${plFile(k, mode, alt)} 880w" sizes="(max-width:600px) 45vw, 220px"` : ''} onerror="plMiss(this)" data-pl="${k}" data-alt="${alt ? 1 : ''}" ${o.ground ? `data-force="${o.ground}"` : ''} alt="${esc(t + (l ? ', ' + l : ''))}" loading="lazy" decoding="async" width="880" height="1100" class="${mode}">
-    <h3>${esc(t)}</h3>${l ? `<p class="lat ${latIsName ? '' : 'rak'}">${esc(l)}</p>` : ''}
+    <div class="pl-cap"><h3>${esc(t)}</h3>${l ? `<p class="pl-l${latIsName ? ' lat-i' : ''}">${esc(l)}</p>` : ''}</div>
     ${p.w ? `<span class="warn">${p.w}</span> ` : ''}${p.n && !o.mini ? `<p class="pt"><b>${esc(p.n)}</b></p>` : ''}${body}`;
   if (o.link !== false) return `<a class="pl-card" href="#plansch-${k.replace(/_/g, '-')}"><figure class="plate ${o.mini ? 'mini' : ''}" ${o.ground ? `data-g="${o.ground}"` : ''}>${inner}</figure></a>`;
   return `<figure class="plate ${o.mini ? 'mini' : ''}" ${o.ground ? `data-g="${o.ground}"` : ''}>${inner}</figure>`;
