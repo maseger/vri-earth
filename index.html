@@ -1,6 +1,6 @@
 <!doctype html><html lang="sv"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Vreta Solglänta · Vreta Regenerative Initiative</title>
-<meta name="description" content="Vreta Solglänta: en skogsglänta utanför Uppsala, nära Ekoln, med skogsträdgård, damm, äng, verkstäder och ett långbord under eken.">
+<meta name="description" content="Vreta Solglänta: en skogsglänta utanför Uppsala med skogsträdgård, damm, äng, verkstäder och ett långbord under eken.">
 <link rel="canonical" href="https://vri.earth/">
 <link rel="alternate" hreflang="sv" href="https://vri.earth/">
 <link rel="alternate" hreflang="en" href="https://vri.earth/en/">
@@ -120,7 +120,8 @@ p{margin:0 0 1em;max-width:68ch;text-wrap:pretty}
 b,strong{font-weight:600;color:var(--text-heading)}
 :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px;box-shadow:0 0 0 4px var(--focus-halo,#F8F2E6)}
 .wash :focus-visible,.foot :focus-visible,[data-tid="natt"] :focus-visible{outline-color:var(--t,#F8F2E6);box-shadow:0 0 0 4px rgba(20,38,31,.85)}
-:root{--text-accent-sm:#A1402D}[data-tid="natt"]{--text-accent-sm:#E6B65A}
+:root{--text-accent-sm:#A1402D}[data-tid="natt"],.skymning,.andl .skymning{--text-accent-sm:#E6B65A}
+.plate[data-g="dag"]{background:#F8F2E6;color:#2B3A31;--text-muted:#5A4636;--text-accent-sm:#A1402D;--text-heading:#1F4D2E;padding:12px}.plate[data-g="dag"] h3{color:#1F4D2E}.plate[data-g="dag"] .pt{color:#2B3A31}
 .cal .d.red .dn::after{content:"•";margin-left:2px}
 .lang-sw{font:600 12px/1 var(--sans);letter-spacing:.12em;text-decoration:none;border:1px solid currentColor;border-radius:999px;padding:6px 10px;margin-left:8px}
 [tabindex="-1"]:focus{outline:none}
@@ -167,8 +168,8 @@ section{padding-block:56px}
 .andl .btn-ghost{border-color:var(--a-strong);color:var(--a-heading)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{border:1px solid var(--border);background:transparent;border-radius:var(--r-pill);padding:7px 14px;font:500 13px/18px var(--sans);color:var(--text-heading);min-height:36px}
-.chip[aria-pressed="true"],.chip.on{background:var(--action-strong);color:var(--on-strong);border-color:var(--action-strong)}
-.andl .chip[aria-pressed="true"]{background:var(--a-action);color:var(--a-on-action);border-color:var(--a-action)}
+.chip[aria-pressed="true"],.chip[role="tab"][aria-selected="true"],.chip.on{background:var(--action-strong);color:var(--on-strong);border-color:var(--action-strong)}
+.andl .chip[aria-pressed="true"],.andl .chip[role="tab"][aria-selected="true"]{background:var(--a-action);color:var(--a-on-action);border-color:var(--a-action)}
 .tag{display:inline-block;font:600 11px/16px var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:var(--r-pill);background:var(--surface-chip);color:var(--text-heading)}
 .link{font-weight:600;text-decoration:none;color:var(--link);display:inline-flex;gap:6px;align-items:center;min-height:32px}
 .link:hover{text-decoration:underline}
@@ -409,7 +410,7 @@ details summary{cursor:pointer;font:600 15px/22px var(--sans);color:var(--text-h
 .mlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
 .mlist a{display:block;padding:14px;border-radius:var(--r-md);text-decoration:none;min-height:96px}
 .mlist a b{display:block;font:600 15px/20px var(--sans)}
-.mlist a span{font-size:12px;line-height:17px;opacity:.9}
+.mlist a span{font-size:12px;line-height:17px}
 .ent{display:grid;grid-template-columns:120px 1fr;gap:4px 18px;padding:12px 0;border-bottom:1px solid var(--border)}
 .ent .dt{font:600 13px/20px var(--sans);color:var(--text-accent-sm,var(--text-accent))}
 .ent h4{margin:0 0 2px}
@@ -454,7 +455,7 @@ details summary{cursor:pointer;font:600 15px/22px var(--sans);color:var(--text-h
 .meal p{margin:0;font-size:13.5px;line-height:20px}
 .meal .strip{height:8px}
 .layers{display:grid;gap:10px}
-.layer{display:grid;grid-template-columns:44px 110px 1fr;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border);opacity:.25;transform:translateY(8px);transition:opacity .5s ease-out,transform .5s ease-out}
+.layer{display:grid;grid-template-columns:44px 110px 1fr;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border);opacity:1;transform:translateY(8px);transition:opacity .5s ease-out,transform .5s ease-out}
 .layer.in{opacity:1;transform:none}
 .layer .ln{font:200 28px/1 var(--sans);color:var(--text-accent)}
 .layer b{font-size:15px}
@@ -772,6 +773,7 @@ function plFile(k, mode, alt2) {
   const f = alt2 && p.f2 ? p.f2 : p.f;
   return `pl/${mode}/${f}`;
 }
+function plT(k) { return PL[k] ? PL[k].t : ''; }
 function plThumb(p) { return p.replace(/^pl\//, 'pl/th/'); }
 function plMiss(i) { if (i.dataset.tried) { const f = i.closest('figure'); if (f) f.classList.add('pl-missing'); i.remove(); return; } i.dataset.tried = 1; if (i.srcset) { i.removeAttribute('srcset'); } else { const f = i.closest('figure'); if (f) f.classList.add('pl-missing'); i.remove(); } }
 function plMode(force) { return force || (night() ? 'natt' : 'dag'); }
@@ -1029,7 +1031,7 @@ function renderFoot(andl) {
    <div><img src="${night() ? B['vreta-mark.svg'] : B['vreta-mark-cream.svg']}" alt="" width="44" height="44" style="height:44px;width:auto">
      <p class="wm">Platsen, materialen och livet</p>
      <p>Vreta Regenerative Initiative · Vreta Solglänta, utanför Uppsala, nära Ekoln</p>
-     ${hand(andl ? 'Välkommen hem.' : 'More life together.')}</div>
+     ${hand(andl ? 'Välkommen hem.' : 'Mer liv tillsammans.')}</div>
    <div><span class="eyebrow">De elva böckerna</span><ul class="books">${BOOKS.map(b => `<li><a href="#${b.id}">${b.n} · ${b.t}</a></li>`).join('')}</ul></div>
    <div><span class="eyebrow">Mer</span><ul class="books" style="columns:1"><li><a href="#om">Om sajten</a></li><li><a href="#karta">Karta</a></li><li><a href="#samlingen">Samlingen</a></li><li><a href="#kalenderaret-hem">Ta med året hem</a></li><li><a href="#besok">Besök</a></li><li><a href="#bockerna">Böckerna som serie</a></li><li><a href="en/" hreflang="en" lang="en">English</a></li></ul></div>
   </div><div class="ai-line"><span><a href="#om" style="color:inherit">Generated by AI, Directed by MS · bilder och texter är skapade med AI</a></span><span>Vreta, ${new Date().getFullYear()}</span></div></div>`;
@@ -1164,13 +1166,14 @@ async function vHome() {
      <div class="grid g3" style="margin-top:28px">${tem.map(([t, f]) => `<a class="pc" href="#solglanta">${img(f, t)}<div class="pc-b"><h3>${t}</h3><p>${temTxt[t] ? t + ' ' + temTxt[t].replace(/\.?$/, '.') : ''}</p></div></a>`).join('')}</div>
      <p><a class="link" href="#solglanta">Om platsen ${ARR}</a></p></div></section>`;
   const art = 'vw_' + ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][p.m - 1];
-  const sam = `<section><div class="wrap"><div class="twocol">
-     <div>${eb('Samlingen · plansch')}<h2>Månadens art: ${esc(PL[art].t)}</h2>
-       <p class="lat" style="font:italic 400 20px/1.4 var(--serif)">${esc(PL[art].l)}</p>
-       <p>${esc(PL[art].x)}</p>
+  const wf = weekFlower(p), artK = PL[art] ? art : (PL[wf] ? wf : null), plA = artK ? PL[artK] : null;
+  const sam = !plA ? '' : `<section><div class="wrap"><div class="twocol">
+     <div>${eb('Samlingen · plansch')}<h2>${artK === art ? 'Månadens art' : 'Veckans växt'}: ${esc(plA.t)}</h2>
+       ${plA.l ? `<p class="lat" style="font:italic 400 20px/1.4 var(--serif)">${esc(plA.l)}</p>` : ''}
+       ${plA.x ? `<p>${esc(plA.x)}</p>` : ''}
        <p class="note">Planscher i von Wrights anda för arter, växter och redskap i böckerna. På dagen ligger de som papper på kalk. Efter solnedgången byts de mot nattens graverade versioner.</p>
        <div class="row"><a class="btn btn-ghost" href="#samlingen">Bläddra i samlingen ${ARR}</a></div></div>
-     <div class="grid g2">${plate(art, { mini: 1 })}${plate(weekFlower(p), { mini: 1, title: 'Veckans växt: ' + PL[weekFlower(p)].t })}</div>
+     <div class="grid g2">${plate(art, { mini: 1 })}${artK === art && PL[wf] ? plate(wf, { mini: 1, title: 'Veckans växt: ' + plT(wf) }) : ''}</div>
    </div></div></section>`;
   const besok = besokBand();
   return sky + hero + `<hr class="rule">` + places + walk + mark + sam + besok;
@@ -1263,8 +1266,8 @@ async function vIdag() {
        <p class="small muted" style="margin-top:12px">Hela listan, att bocka av i webbläsaren, finns på <a href="#kalenderaret-${m.ym}">månadens sida</a>.</p>
      </div>
      <aside>
-       ${plate(art, { title: 'Månadens art: ' + PL[art].t })}
-       <div style="margin-top:36px">${plate(weekFlower(p), { title: 'Veckans växt: ' + PL[weekFlower(p)].t, text: false })}</div>
+       ${PL[art] ? plate(art, { title: 'Månadens art: ' + plT(art) }) : ''}
+       <div style="margin-top:36px">${PL[weekFlower(p)] ? plate(weekFlower(p), { title: 'Veckans växt: ' + plT(weekFlower(p)), text: false }) : ''}</div>
        <div style="margin-top:28px">${hand(m.hand && m.hand.split(' ').length <= 5 ? m.hand : 'Följ året ett varv.')}</div>
      </aside></div></section>
    <section style="padding-top:0">${eb('Fyra vatten')}<h2>Vattnet i ${MN[p.m - 1]}</h2>
@@ -1298,7 +1301,7 @@ async function vInatt() {
    ${m.ord ? `<section style="padding-top:0"><div class="twocol"><div>${eb('Ordet')}<h2 style="font-family:var(--serif);font-style:italic;font-weight:400">${esc(m.ord[0])}</h2><p class="lead">${esc(m.ord[1])}</p></div><div><p>${m.ord[2]}</p><p class="small muted">Ett ord på quechua att bära med sig. En beskrivning och en tanke, inte en handledning.</p></div></div></section>` : ''}
    <section style="padding-top:0">${eb('Högtider i månaden')}${(hits(m.dates, p).length ? hits(m.dates, p) : upcoming(m.dates, p, 4)).map(e => `<div class="ent"><span class="dt">${e[0]}</span><div><h4>${e[1]}</h4><p>${e[2]}</p></div></div>`).join('')}
      <p class="small muted">Datum som följer månen är beräknade i förväg och kan skifta en dag.</p>
-     <div style="margin-top:28px">${plate(m.ym === '2026-12' ? 'vw_dec' : m.ym === '2028-02' ? 'vw_feb' : kalKey(m.ym), { ground: 'natt', title: 'Månadens art: ' + PL[kalKey(m.ym)].t })}</div>
+     <div style="margin-top:28px">${plate(m.ym === '2026-12' ? 'vw_dec' : m.ym === '2028-02' ? 'vw_feb' : kalKey(m.ym), { ground: 'natt', title: 'Månadens art: ' + plT(kalKey(m.ym)) })}</div>
      ${hand(m.hand)}</section></div>`;
 }
 function kalKey(ym) { if (ym === '2028-01') return 'vw_jan28'; if (ym === '2026-12') return 'vw_dec'; if (ym === '2028-02') return 'vw_feb'; return 'vw_' + ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][+ym.slice(5) - 1]; }
@@ -1338,10 +1341,10 @@ async function vSolglanta(sub) {
       <div class="grid g3">${(R.teman || []).map(t => `<div class="card"><h3>${t[0]}</h3><p>${t[0]} ${t[1]}</p></div>`).join('')}</div></section>
     <section style="padding-top:0">${eb('Initiativets åtta pelare')}<div class="grid g4">${(R.pelare || []).map(p => `<div class="card alt">${pillarIcon(p[0])}<h3 style="margin-top:10px">${p[0]}</h3><p>${p[1]}</p></div>`).join('')}</div>
       <p style="margin-top:24px">Tre verb bär arbetet: <b>göra, följa, dela</b>. Och återbruket har sitt eget flöde:</p>${flow('Hitta · Ta tillvara · Restaurera · Anpassa · Använda')}
-      <div style="margin-top:28px">${quote('En planterad buske är början, inte slutet.', 'Solglänta, kap. 2, ”Vreta Solglänta som Field Lab”')}</div></section>
+      <div style="margin-top:28px">${quote('En planterad buske är början, inte slutet.', 'Solglänta, kap. 2')}</div></section>
     <section style="padding-top:0"><div class="twocol"><div>${ak('akvarell-detalj-orangeriet.jpg', 'Orangeriet')}</div>
       <div>${eb('Kapitel 13 · Om tio år')}<h2>Om tio år</h2>${(R.tioar || []).filter(x => !/orangeriet står där/.test(x)).slice(0, 3).map(x => `<p>${x}</p>`).join('')}
-      <p class="lead">Stora förändringar börjar sällan stort. De börjar med någon som gör något litet, på riktigt, och som inte slutar.</p>${hand('Börja nu.')}</div></div></section>
+      <p class="lead">Stora förändringar börjar sällan stort. De börjar med någon som gör något litet, på riktigt, och som inte slutar.</p>${hand('Börja i det lilla.')}</div></div></section>
     <section style="padding-top:0"><div class="card alt" style="max-width:820px"><h2>Aldrig färdigt</h2><p>Vreta Solglänta kommer aldrig att bli färdig. Växter växer, dör och ersätts. En plats som kan förändras kan också anpassa sig. En plats som är färdig kan bara förfalla.</p>${hand('Aldrig färdigt. Alltid lärande.')}</div>
       <p style="margin-top:24px" class="quote">”Vi vill bidra till mer liv än vi tar i anspråk. Det gäller en trädgård. Det gäller också ett liv.”<cite>Solglänta, efterord</cite></p></section></div>`;
   } else if (sub === 'systemet') {
@@ -1421,7 +1424,7 @@ async function vSolglanta(sub) {
   return head + subnav('solglanta', subs, sub || '') + body;
 }
 function pillarIcon(n) {
-  const p = { 'Regeneration': '<path d="M12 21c0-6 0-9 0-12M12 9c-4 0-6-3-6-6 4 0 6 3 6 6zM12 13c3 0 6-2 6-6-4 0-6 2-6 6z"/>', 'Biologisk mångfald': '<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>', 'Odling': '<path d="M4 20h16M12 20v-8M12 12c-3 0-5-2-5-5 3 0 5 2 5 5zM12 14c3 0 5-2 5-5-3 0-5 2-5 5z"/>', 'Byggande': '<path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6"/>', 'Återbruk': '<path d="M7 9l3-5 3 5M17 11l3 5h-6M8 18H4l3-5M10 4l-1 0M13 9H9"/>', 'Lärande': '<path d="M3 8l9-4 9 4-9 4zM7 10v5c3 2 7 2 10 0v-5"/>', 'Field Lab': '<path d="M9 3h6M10 3v6l-5 10h14L14 9V3"/>', 'Tillverkning': '<path d="M14 4l6 6-3 3-6-6zM11 7l-8 8 3 3 8-8"/>' }[n] || '<circle cx="12" cy="12" r="6"/>';
+  const p = { 'Regeneration': '<path d="M12 21c0-6 0-9 0-12M12 9c-4 0-6-3-6-6 4 0 6 3 6 6zM12 13c3 0 6-2 6-6-4 0-6 2-6 6z"/>', 'Biologisk mångfald': '<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/>', 'Odling': '<path d="M4 20h16M12 20v-8M12 12c-3 0-5-2-5-5 3 0 5 2 5 5zM12 14c3 0 5-2 5-5-3 0-5 2-5 5z"/>', 'Byggande': '<path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6"/>', 'Återbruk': '<path d="M7 9l3-5 3 5M17 11l3 5h-6M8 18H4l3-5M10 4l-1 0M13 9H9"/>', 'Lärande': '<path d="M3 8l9-4 9 4-9 4zM7 10v5c3 2 7 2 10 0v-5"/>', 'Försöksytan': '<path d="M9 3h6M10 3v6l-5 10h14L14 9V3"/>', 'Tillverkning': '<path d="M14 4l6 6-3 3-6-6zM11 7l-8 8 3 3 8-8"/>' }[n] || '<circle cx="12" cy="12" r="6"/>';
   return `<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="var(--mossa)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
 }
 function layersSVG() {
@@ -1575,7 +1578,7 @@ async function vVerktygen(sub) {
        <select id="hst" aria-label="Var vi står"><option value="">Alla lägen</option><option>Finns på Vreta</option><option>Hittas begagnat</option><option>Köps nytt</option></select></div>
        <span class="cnt" id="hcnt" aria-live="polite"></span></div>
      <div class="grid auto-s" id="hlist">${VT.hack.map(hackCard).join('')}</div></section>
-   <section style="padding-top:0">${eb('Verktygsåret')}<div class="chips" role="tablist" aria-label="Verktygsåret">${(VT.aret || []).map((a, i) => `<button class="chip" role="tab" type="button" data-vy="${i}" aria-selected="${!i}" aria-pressed="${!i}">${a[0]}</button>`).join('')}</div>
+   <section style="padding-top:0">${eb('Verktygsåret')}<div class="chips" role="tablist" aria-label="Verktygsåret">${(VT.aret || []).map((a, i) => `<button class="chip" role="tab" type="button" data-vy="${i}" aria-selected="${!i}">${a[0]}</button>`).join('')}</div>
      <div id="vyar" class="card alt" style="margin-top:14px" role="tabpanel"><p>${(VT.aret || [[0, '']])[0][1]}</p></div>
      <script type="application/json" id="vydata">${JSON.stringify(VT.aret || [])}<\/script></section>
    <section style="padding-top:0"><div class="twocol"><div>${eb('Börja här')}${checklist('vt-borja', (VT.borja || []))}</div>
@@ -1612,7 +1615,7 @@ document.addEventListener('click', e => {
     askFragor(st + 1);
   }
   const vy = e.target.closest('[data-vy]');
-  if (vy) { const D = JSON.parse($('#vydata').textContent); $$('[data-vy]').forEach(x => { x.setAttribute('aria-selected', String(x === vy)); x.setAttribute('aria-pressed', String(x === vy)); }); $('#vyar').innerHTML = `<p>${D[+vy.dataset.vy][1]}</p>`; }
+  if (vy) { const D = JSON.parse($('#vydata').textContent); $$('[data-vy]').forEach(x => { x.setAttribute('aria-selected', String(x === vy)); }); $('#vyar').innerHTML = `<p>${D[+vy.dataset.vy][1]}</p>`; }
 });
 function shadowboard() {
   const T = [['Spade', 'mossa', 'M40 30h10v120h-10z M30 150h30l-5 40h-20z', 41], ['Kratta', 'mossa', 'M100 30h8v140h-8z M80 170h48v8h-48z M82 178h4v14h-4z M95 178h4v14h-4z M108 178h4v14h-4z M121 178h4v14h-4z', 4], ['Hammare', 'skog', 'M160 60h8v120h-8z M145 45h38v20h-38z', 14], ['Såg', 'skog', 'M210 50h70l-10 90h-60z M200 40h22v30h-22z', 16], ['Tång', 'rost', 'M310 50l8 80-8 50h6l8-50 8 50h6l-8-50 8-80z', 101], ['Fil', 'rost', 'M370 40h10v140h-10z M366 150h18v40h-18z', 81], ['Hink', 'mossa', 'M420 80h56l-8 90h-40z M418 76h60v6h-60z', 41], ['Tumstock', 'skog', 'M500 40h14v150h-14z', 31]];
@@ -1720,7 +1723,7 @@ function mealPage(K, nr) {
   return `<div class="strip" style="${washVars(mealSeason(m))};height:14px"></div><div class="wrap"><section><div class="twocol r"><article>
     ${eb(`Måltid ${String(m.nr).padStart(2, '0')} · ${esc(m.kap)}`)}<h1 tabindex="-1">${esc(m.titel)}</h1>
     <p class="muted"><i>${String(esc(m.meta))}</i></p>
-    ${m.flyttad ? `<p class="note">${m.flyttad}</p>` : ''}
+    
     ${m.intro.map(x => `<p class="lead">${x}</p>`).join('')}
     ${m.recept.length ? `<h2 style="margin-top:28px">Recept</h2>
     <div class="scale no-print"><label for="gaster">Antal gäster</label><input type="range" id="gaster" min="2" max="${Math.max(40, base * 2)}" value="${base}" data-base="${base}"><output id="gout">${base}</output><span class="small muted">Boken är skriven för ${base}. Mängderna räknas om ungefärligt.</span></div>
@@ -1793,7 +1796,7 @@ async function vVerkstaderna(sub) {
     <section><div class="twocol"><div>${quote('Hantverk är det äldsta sättet vi har att förstå material – och det ärligaste sättet att visa vad vi kan.', 'Verkstäderna, förord')}</div>
       <div><h2>Sju verkstäder</h2><p class="lead">Konstnärsstudion, keramiken, snickeriet och sömmeriet är i bruk året om.</p></div></div></section>
     <section style="padding-top:0">${eb('Verkstadsväljaren')}<h2>Sju dörrar och ett väveri</h2>
-     <div class="chips" role="tablist" aria-label="Verkstäder">${D.map((d, i) => `<button class="chip" type="button" role="tab" data-door="${i}" aria-selected="${!i}" aria-pressed="${!i}">${d[1]}</button>`).join('')}</div>
+     <div class="chips" role="tablist" aria-label="Verkstäder">${D.map((d, i) => `<button class="chip" type="button" role="tab" data-door="${i}" aria-selected="${!i}">${d[1]}</button>`).join('')}</div>
      <div id="dorr" style="margin-top:20px"></div>
      <script type="application/json" id="dorrdata">${JSON.stringify(D.map(d => ({ id: d[0], t: d[1], v: d[2], pl: d[3], q: d[4], h: d[5], ak: d[6] || '', flow: (R.flow || {})[d[0]] || '', txt: ((R.text || {})[d[0]] || []).slice(0, 2) })))}<\/script></section>
     <section style="padding-top:0"><div class="twocol"><div>${eb('Keramiken · ugnen öppnas')}<h2>Ugnen har sista ordet</h2>
@@ -1813,7 +1816,7 @@ async function vVerkstaderna(sub) {
 }
 function doorRender(i) {
   const D = JSON.parse(($('#dorrdata') || {}).textContent || '[]'), d = D[i]; if (!d) return;
-  $$('[data-door]').forEach(b => { b.setAttribute('aria-selected', String(+b.dataset.door === i)); b.setAttribute('aria-pressed', String(+b.dataset.door === i)); });
+  $$('[data-door]').forEach(b => { b.setAttribute('aria-selected', String(+b.dataset.door === i)); });
   $('#dorr').innerHTML = `<div class="twocol r card" style="padding:28px"><div>${d.v ? '' : eb('I bruk')}<h3 style="font-size:24px">${d.t}</h3>
     ${d.flow ? flow(d.flow) : ''}<div style="margin-top:16px">${d.txt.map(x => `<p>${x}</p>`).join('')}</div>
     <p class="quote" style="font-size:22px">”${esc(d.q)}”</p>${d.h ? hand(d.h) : ''}
@@ -2148,12 +2151,12 @@ function icsFile(list) {
   L.push('END:VCALENDAR');
   return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(L.join('\r\n'));
 }
-function gcal(t, a, b) { return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(t + ' på Vreta')}&dates=${a.replace(/-/g, '')}/${b.replace(/-/g, '')}&details=${encodeURIComponent('Ur Kalenderåret. Vi samlar inga uppgifter om dig.')}`; }
+function gcal(t, a, b) { return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(t + ' på Vreta')}&dates=${a.replace(/-/g, '')}/${b.replace(/-/g, '')}&details=${encodeURIComponent('Ur Kalenderåret.')}`; }
 function hemBlock() {
   const lst = HOGTIDER.slice(0, 4).map(h => [h[0], h[1], h[2], h[0] === 'Midsommar' ? 'Midsommar 21–26 juni 2027. Midsommarafton fredag 25 juni\\, midsommardagen lördag 26 juni.' : '']);
   const txt = 'Vintersolståndet 21–22 december 2026\nKyndelsmäss 7 februari 2027\nValborg 30 april 2027\nMidsommar 21–26 juni 2027 (midsommarafton 25 juni, midsommardagen 26 juni)';
   return `<section id="hem">${eb('Ta med året hem')}<h2>Platsens fyra högtider</h2>
-   <p class="lead">Vintersolståndet 21–22 december, Kyndelsmäss 7 februari, Valborg 30 april och Midsommar 21–26 juni. Lägg datumen i din egen kalender. Vi samlar inga uppgifter om dig.</p>
+   <p class="lead">Vintersolståndet 21–22 december, Kyndelsmäss 7 februari, Valborg 30 april och Midsommar 21–26 juni. Lägg datumen i din egen kalender. Filen hämtar du direkt härifrån. Knappen för Google Kalender öppnar Googles tjänst, och där gäller Googles villkor.</p>
    <div class="grid g4">${HOGTIDER.slice(0, 4).map(h => `<div class="card">${HIMG[h[0]] ? drv(HIMG[h[0]], h[0], { cls: 'ak' }) : ''}<h3 style="margin-top:10px">${h[0]}</h3><p class="num">${fmtRange(h[1], h[2])}</p>${h[0] === 'Midsommar' ? '<p class="small muted">Midsommarafton fredag 25 juni, midsommardagen lördag 26 juni.</p>' : ''}<p class="ics"><a href="${icsFile([[h[0], h[1], h[2]]])}" download="vreta-${h[0].toLowerCase()}.ics">Lägg i kalendern</a> · <a href="${gcal(h[0], h[1], h[2])}" target="_blank" rel="noopener">Google</a></p></div>`).join('')}</div>
    <div class="row" style="margin-top:16px"><a class="btn btn-primary" href="${icsFile(lst)}" download="vreta-hogtider.ics">Lägg alla i kalendern</a><button class="btn btn-ghost" type="button" data-copy="${esc(txt)}">Kopiera alla datum</button></div>
    ${hand('Välkommen in i året.')}</section>`;
@@ -2163,7 +2166,7 @@ async function vKalenderaret(sub) {
   const K = await load('kalender');
   if (sub && /^\d{4}-\d\d$/.test(sub)) return kalMonthPage(K, sub);
   const p = todayP(), { m: cur } = kalMonth(K, p);
-  const head = opener({ s: cur.sasong, folio: '10', akHtml: `<div style="width:100%">${plate(cur.plate, { title: 'Månadens art: ' + PL[cur.plate].t })}</div>`, eyebrow: 'Dagens himmel · bok 10 · Kalenderåret',
+  const head = opener({ s: cur.sasong, folio: '10', akHtml: `<div style="width:100%">${plate(cur.plate, { title: 'Månadens art: ' + plT(cur.plate) })}</div>`, eyebrow: 'Dagens himmel · bok 10 · Kalenderåret',
     h1: 'Platsen säger vilken tid det är', lead: `Kalendern på väggen säger vilken dag det är. På Vreta går fyra klockor samtidigt: solen, månen, naturen och människornas högtider. I dag går solen ned ${sunTimes(new Date()).down ? tfmt(sunTimes(new Date()).down) : ''}. Fullmånen kallar vi ${fullMoonName(nextPhase(new Date(), .5))}.`, hand: 'Följ året ett varv.' });
   return head + `<div class="wrap">
    <section>
@@ -2221,7 +2224,7 @@ async function vAndetag(sub) {
   const A = await load('andetag');
   if (sub && /^\d{4}-\d\d$/.test(sub)) return andMonthPage(A, sub);
   const p = todayP(), { m: cur } = andMonth(A, p);
-  const head = opener({ s: 'himlen', folio: '11', akHtml: `<div style="width:100%;max-width:480px">${plate(kalKey(cur.ym), { ground: 'natt', title: 'Månadens art: ' + PL[kalKey(cur.ym)].t })}</div>`, eyebrow: 'Nattens himmel · bok 11 · Årets andetag',
+  const head = opener({ s: 'himlen', folio: '11', akHtml: `<div style="width:100%;max-width:480px">${plate(kalKey(cur.ym), { ground: 'natt', title: 'Månadens art: ' + plT(kalKey(cur.ym)) })}</div>`, eyebrow: 'Nattens himmel · bok 11 · Årets andetag',
     h1: 'Året börjar i mörkret', lead: 'I nästan alla traditioner börjar något nytt i mörkret: fröet i jorden, barnet i natten, ljuset som tänds när det är som svagast. Årets andetag följer femton månar, från Vintermånen i december 2026 till Ljusmånen i februari 2028.', hand: 'Andas in. Året börjar nu.' });
   return `<div class="skymning">` + head + `<div class="wrap">
     <section><p class="lead">Där Kalenderåret frågar vad som ska göras, frågar den här boken hur det kan göras med närvaro.</p>
@@ -2271,7 +2274,7 @@ document.addEventListener('input', e => { const n = e.target.dataset && e.target
 document.addEventListener('click', async e => {
   if (!e.target.closest('[data-arsbok]')) return;
   const A = await load('andetag');
-  $('#arsbok').innerHTML = `<h1>Min årsbok · Årets andetag</h1>` + A.manader.map(m => { const a = store.get('note:avsikt-' + m.ym), t = store.get('note:tack-' + m.ym); return (a || t) ? `<h2>${esc(m.titel)} · ${esc(m.mane)}</h2>${a ? `<p><b>Avsikt:</b> ${esc(a)}</p>` : ''}${t ? `<p><b>Tack:</b> ${esc(t)}</p>` : ''}` : ''; }).join('') + '<p>Generated by AI, Directed by MS</p>';
+  $('#arsbok').innerHTML = `<h1>Min årsbok · Årets andetag</h1>` + A.manader.map(m => { const a = store.get('note:avsikt-' + m.ym), t = store.get('note:tack-' + m.ym); return (a || t) ? `<h2>${esc(m.titel)} · ${esc(m.mane)}</h2>${a ? `<p><b>Avsikt:</b> ${esc(a)}</p>` : ''}${t ? `<p><b>Tack:</b> ${esc(t)}</p>` : ''}` : ''; }).join('') + '<p>Dina egna anteckningar ur Årets andetag. Mallen och frågorna kommer från vri.earth.</p>';
   sparaFil('min-arsbok-arets-andetag.html', '<!doctype html><meta charset="utf-8"><title>Min årsbok</title><body style="font-family:Georgia,serif;max-width:40em;margin:2em auto;line-height:1.5">' + $('#arsbok').innerHTML + '</body>');
 });
 
@@ -2373,10 +2376,10 @@ async function vBockerna() {
 }
 async function vOm() {
   return `<div class="wrap narrow" style="max-width:820px;margin:0 auto"><section>${eb('Om sajten')}<h1 tabindex="-1">Om sajten</h1>
-   <h2>Tre bildregister</h2><dl class="kv"><dt>Akvarell</dt><dd>Platsen som berättelse. Bara akvarell öppnar ett rum.</dd><dt>Plansch</dt><dd>Arter, växter, djur och verktyg. Aldrig öppningsbild.</dd><dt>Fotorealistiska bilder</dt><dd>Stämningen och samvaron. De visar hur det känns att vara här, inte dokumenterade tillfällen. Ingen namnges.</dd></dl>
+   <h2>Tre slags bilder</h2><p>Bilder och texter på sajten är skapade med AI och styrda av oss. De visar platsen och livet här som vi ser det.</p><dl class="kv"><dt>Akvarell</dt><dd>Platsen som berättelse. Varje rum börjar med en akvarell.</dd><dt>Plansch</dt><dd>Arter, växter, djur och verktyg, tecknade i von Wrights anda.</dd><dt>Fotorealistiska bilder</dt><dd>Stämningen och samvaron. De visar hur det känns att vara här, inte dokumenterade tillfällen. Ingen namnges.</dd></dl>
    <h2 style="margin-top:28px">Kartan</h2><p>Kartan är en förenklad plan efter nybyggnadskartan, inte skalenlig: norr uppåt, vägen längs den sydvästra sidan med syrenhäcken och infarten mitt på, dammen i västra delen. Omgivningen, med Ekoln, kärren, Hammarskog och Vreta udde, har en egen karta.</p>
    <h2>Dag, natt och följ solen</h2><p>Sajten räknar ut soluppgång och solnedgång för Uppsala i din webbläsare. Efter solnedgången blir den nattskog och månljus, och planscherna byts mot nattens versioner. Ditt val sparas bara i din webbläsare.</p>
-   <h2>Ingen persondata</h2><p>Det finns inga formulär. Intresseanmälan skickar du själv från din e-post. Mejl till hej@vri.earth tas emot av Vreta Solglänta, används bara för att svara dig och raderas när ärendet är klart. Det du skriver i Årets andetag och de listor du bockar av stannar i din webbläsare.</p></section></div>`;
+   <h2>Sajten samlar ingen persondata</h2><p>Det finns inga formulär. Intresseanmälan skickar du själv från din e-post. Mejl till hej@vri.earth tas emot av Vreta Solglänta, används bara för att svara dig och raderas när ärendet är klart. Det du skriver i Årets andetag och de listor du bockar av stannar i din webbläsare.</p></section></div>`;
 }
 function notFound() { return `<div class="wrap"><section style="padding-block:120px"><h1 tabindex="-1">Den här stigen är igenvuxen.</h1><p><a class="btn btn-primary" href="#cafeet-och-shopen">Tillbaka till grinden ${ARR}</a></p></section></div>`; }
 
