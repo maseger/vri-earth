@@ -324,7 +324,13 @@ picture{display:contents}
 .plate.mini .pl-cap .pl-l{font-size:11.5px;line-height:16px;letter-spacing:.04em}
 .plate[data-g="dag"] .pl-cap{--pl-ink:#2B3A31;--pl-ink2:#5A4636}
 .plate .pl-cap .pl-l.lat-i{font:italic 400 15px/20px var(--serif);letter-spacing:0}
+.plate .pl-cap .pl-l i.ln{font:italic 400 15px/20px var(--serif);letter-spacing:0}
+.lat-mix{font:400 16px/1.5 var(--sans);color:var(--text-muted);letter-spacing:.02em}
+.lat-mix i.ln{font:italic 400 22px/1.4 var(--serif);letter-spacing:0}
+.lat-mix.sm{font-size:13.5px;line-height:20px}
+.lat-mix.sm i.ln{font-size:15px;line-height:22px}
 .plate.mini .pl-cap .pl-l.lat-i{font-size:13.5px;line-height:18px}
+.plate.mini .pl-cap .pl-l i.ln{font-size:13.5px;line-height:18px}
 .plate .pt{font-size:14px;line-height:22px;margin:0 0 8px}
 .plate figcaption{font-size:12px;line-height:18px}
 .plate .warn{display:inline-block;font:600 12px/16px var(--sans);color:var(--text-heading);border:1px solid currentColor;border-radius:var(--r-pill);padding:2px 9px;margin:0 0 8px}
@@ -809,24 +815,59 @@ function plate(k, o = {}) {
   const alt = o.alt2 && p.f2;
   let t = p.t, l = p.l, x = p.x;
   if (o.book && p.alt) { const a = p.alt.find(z => z.b === o.book); if (a) { t = a.t; l = a.l; x = a.x || x; } }
-  if (o.title) t = o.title;
+  /* egen titel: gruppens latin följer bara med om titeln innehåller planschens egen titel (t.ex. "Species of the month: …") */
+  if (o.title) { l = o.lat !== undefined ? o.lat : (o.title.toLowerCase().includes(String(t).toLowerCase()) ? l : ''); t = o.title; }
+  t = capTitle(t, l);
+  if (l && t.toLowerCase().includes(l.toLowerCase())) l = '';
   const kick = k.indexOf('en_') >= 0 ? 'Reference page' : 'Plate';
   const mode = plMode(o.ground);
-  const latIsName = isLatin(l) && !/\b(and|for|of|the|in|from|with|to|on|by|at|is|are|a|an)\b/.test(l.split(/[–—]/)[0]);
   const body = o.mini ? '' : (o.text !== false && x ? `<p class="pt">${esc(x)}</p>` : '');
+  const cap = o.caption === false ? '' : `<div class="pl-cap"><h3>${esc(t)}</h3>${l ? `<p class="pl-l">${latFmt(l)}</p>` : ''}</div>`;
   const inner = `<span class="kick">${kick}${p.m ? ' · ' + esc(p.m) : ''}</span>
     <img src="${plFile(k, mode, alt)}" ${o.mini ? `srcset="${plThumb(plFile(k, mode, alt))} 440w, ${plFile(k, mode, alt)} 880w" sizes="(max-width:600px) 45vw, 220px"` : ''} onerror="plMiss(this)" data-pl="${k}" data-alt="${alt ? 1 : ''}" ${o.ground ? `data-force="${o.ground}"` : ''} alt="${esc(t + (l ? ', ' + l : ''))}" loading="lazy" decoding="async" width="880" height="1100" class="${mode}">
-    <div class="pl-cap"><h3>${esc(t)}</h3>${l ? `<p class="pl-l${latIsName ? ' lat-i' : ''}">${esc(l)}</p>` : ''}</div>
+    ${cap}
     ${p.w ? `<span class="warn">${p.w}</span> ` : ''}${p.n && !o.mini ? `<p class="pt"><b>${esc(p.n)}</b></p>` : ''}${body}`;
   if (o.link !== false) return `<a class="pl-card" href="#plansch-${k.replace(/_/g, '-')}"><figure class="plate ${o.mini ? 'mini' : ''}" ${o.ground ? `data-g="${o.ground}"` : ''}>${inner}</figure></a>`;
   return `<figure class="plate ${o.mini ? 'mini' : ''}" ${o.ground ? `data-g="${o.ground}"` : ''}>${inner}</figure>`;
 }
-function isLatin(l) {
-  if (!l || /[åäöÅÄÖ]/.test(l)) return false;
-  const m = l.match(/^([A-Z][a-zë]+)(.)?\s?(\S+)?/); if (!m) return false;
-  if (m[2] === ',') return /^[A-Z]/.test(m[3] || '');
-  if (/^(Fransk|Svensk|Ek|Te|Sallat|Dill)$/.test(m[1])) return false;
-  return true;
+/* latinska namn: kursiv per del. Undertexten delas vid tankstreck; i varje del är bara de
+   vetenskapliga namnen kursiva (binom, trinom, "R. rubrum", "Genus sp.", släktnamn i listor),
+   bindeord, svenska/engelska namn och sortnamn står raka. */
+const LAT_END = /(us|um|a|ae|is|e|i|ix|ex|ax|ox|os|on|o|er|ens|ans|or|ur|ar|al|bs|ys|es|as)$/;
+function latKind(s) {
+  if (!s || /[åäöÅÄÖ]/.test(s) || /\d/.test(s)) return '';
+  if (/^([A-Z][a-zë]+|[A-Z]\.)(?: ×)?(?: [a-zë][a-zë-]+){1,2}$/.test(s)) {
+    const ep = s.split(' ').slice(1).filter(w => w !== '×');
+    return ep.every(w => LAT_END.test(w)) ? 'bi' : '';
+  }
+  if (/^[A-Z][a-zë]+ spp?\.$/.test(s)) return 'bi';
+  if (/^[A-Z][a-zë]+$/.test(s) && LAT_END.test(s)) return 'uni';
+  return '';
+}
+function latPart(part) {
+  const toks = part.split(/(,\s+|\s+(?:och|and|&)\s+)/);
+  const items = toks.map((tk, i) => {
+    if (i % 2) return { s: tk, k: 'sep' };
+    const m = tk.match(/^(.*?)(\s+[’‘'][^’‘']+[’'])?(\s+(?:m\.fl\.|and more))?$/);
+    return { s: m[1], cv: m[2] || '', tail: m[3] || '', k: latKind(m[1]) };
+  });
+  const it = items.filter(z => z.k !== 'sep');
+  /* ett ensamt "binom" först i en lista av vanliga ord är versal i början av en mening ("Folding rule, try square …") */
+  if (it.length > 1 && it[0].k && it.slice(1).every(z => !z.k)) it[0].k = '';
+  const nBi = it.filter(z => z.k === 'bi').length, nUni = it.filter(z => z.k === 'uni').length;
+  const okUni = nBi > 0 || nUni >= 2 || (it.length === 1 && nUni === 1);
+  return items.map(z => z.k === 'sep' ? esc(z.s) : ((z.k === 'bi' || (z.k === 'uni' && okUni)) ? `<i class="ln">${esc(z.s)}</i>` : esc(z.s)) + esc(z.cv) + esc(z.tail)).join('');
+}
+function latFmt(l) {
+  return String(l).split(/(\s+[–—]\s+|—)/).map((s, i) => i % 2 ? esc(s) : latPart(s)).join('');
+}
+/* titelns parentes tas bort när de latinska namnen i den redan står i undertexten */
+function capTitle(t, l) {
+  const m = String(t).match(/^(.*\S)\s+\(([^()]+)\)$/); if (!m || !l) return t;
+  const L = String(l);
+  const covered = s => L.includes(s) || (/^[A-Z][a-zë]+ /.test(s) && L.includes(s[0] + '. ' + s.split(' ').slice(1).join(' ')));
+  const rest = m[2].split(/,\s+/).filter(s => !(latKind(s) && covered(s)));
+  return rest.length ? `${m[1]} (${rest.join(', ')})` : m[1];
 }
 function swapPlates() {
   const m = night() ? 'natt' : 'dag';
@@ -2383,12 +2424,12 @@ function vPlansch(hk) {
   const p = PL[k];
   const lst = Object.values(PL).filter(x => x.a === p.a), i = lst.indexOf(p), prev = lst[i - 1], nx = lst[i + 1];
   const avd = AVD.find(a => a[0] === p.a);
-  return `<div class="wrap"><section><div class="plate-solo"><div>${plate(k, { link: false, text: false })}
+  return `<div class="wrap"><section><div class="plate-solo"><div>${plate(k, { link: false, text: false, caption: false })}
      <div class="twin"><figure class="tdag"><img src="/pl/dag/${p.f}" alt="${esc(p.t)}, dagversion" loading="lazy" decoding="async" width="880" height="1100"><figcaption>Day · paper on limewash</figcaption></figure><figure class="tnatt"><img src="/pl/natt/${p.f}" alt="${esc(p.t)}, nattversion" loading="lazy" decoding="async" width="880" height="1100"><figcaption>Night · pale lines against night forest</figcaption></figure></div></div>
-    <div>${eb(`The Collection · <a href="#samlingen-${p.a}">${avd ? avd[1] : ''}</a>`)}<h1 tabindex="-1">${esc(p.t)}</h1>${p.l ? `<p class="lat" style="font:italic 400 22px/1.4 var(--serif);color:var(--text-muted)">${esc(p.l)}</p>` : ''}
+    <div>${eb(`The Collection · <a href="#samlingen-${p.a}">${avd ? avd[1] : ''}</a>`)}<h1 tabindex="-1">${esc(capTitle(p.t, p.l))}</h1>${p.l && !capTitle(p.t, p.l).toLowerCase().includes(p.l.toLowerCase()) ? `<p class="lat lat-mix">${latFmt(p.l)}</p>` : ''}
      ${p.w ? `<p><span class="tag">${p.w}</span></p>` : ''}${p.n ? `<p class="note">${esc(p.n)}</p>` : ''}
      ${p.x ? `<p class="lead">${esc(p.x)}</p>` : ''}
-     ${(p.alt || []).map(a => `<div class="card alt" style="margin-top:12px"><span class="eyebrow">I ${esc(a.b)}</span><h3>${esc(a.t)}</h3><p class="lat" style="font:italic 15px/22px var(--serif)">${esc(a.l)}</p>${a.x && a.x !== p.x ? `<p>${esc(a.x)}</p>` : ''}</div>`).join('')}
+     ${(p.alt || []).map(a => `<div class="card alt" style="margin-top:12px"><span class="eyebrow">I ${esc(a.b)}</span><h3>${esc(a.t)}</h3><p class="lat lat-mix sm">${latFmt(a.l)}</p>${a.x && a.x !== p.x ? `<p>${esc(a.x)}</p>` : ''}</div>`).join('')}
      <h3 style="margin-top:24px">Appears in the books</h3><div class="row">${(p.b || []).map(b => `<a class="btn btn-ghost" href="#${BOOKLINK[b]}">${b}</a>`).join('')}</div>
      <div class="row" style="margin-top:24px;justify-content:space-between">${prev ? `<a class="link" href="#plansch-${prev.k.replace(/_/g, '-')}">← ${esc(prev.t)}</a>` : '<span></span>'}${nx ? `<a class="link" href="#plansch-${nx.k.replace(/_/g, '-')}">${esc(nx.t)} ${ARR}</a>` : ''}</div></div></div></section></div>`;
 }
