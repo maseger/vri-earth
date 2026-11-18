@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VRI.EARTH – Året och platsen</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Vreta Solglänta utanför Uppsala genom året: en illustrerad karta, rummen och högtiderna. Följ året och lägg Vretas dagar i din kalender.">
+<meta property="og:title" content="VRI.EARTH – Året och platsen">
+<meta property="og:description" content="Följ Vreta Solglänta genom året.">
+<meta property="og:image" content="img/karta.jpg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: illustrated year wheel steers an illustrated map; renders open as rooms; watercolour plates as quiet margins */
+:root{--bg:#F6F0E2;--paper:#EDE4CF;--ink:#2B2A24;--soft:#5B5A4E;--moss:#3E5A3A;--gold:#A8822F;--glow:#E3B95F;--water:#8FB0B8;--card:#FBF7EE;
+--display:"Cormorant Garamond",Georgia,serif;--body:"DM Sans",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C211C;--paper:#252C25;--ink:#EDE6D3;--soft:#B5B09E;--moss:#9DBB8F;--gold:#D9B565;--glow:#C99A3E;--water:#4F7480;--card:#2B332B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1C211C;--paper:#252C25;--ink:#EDE6D3;--soft:#B5B09E;--moss:#9DBB8F;--gold:#D9B565;--glow:#C99A3E;--water:#4F7480;--card:#2B332B;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body)}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1.05}
+h1{font-size:clamp(44px,7vw,88px)}h2{font-size:clamp(34px,4.5vw,54px)}h3{font-size:28px;font-weight:600}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+p{margin:0;max-width:62ch;color:var(--soft)}
+nav{display:flex;justify-content:space-between;align-items:center;padding-block:24px;gap:16px;flex-wrap:wrap}
+nav b{font-family:var(--display);font-size:26px;letter-spacing:.08em}
+nav div{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;font-weight:500;color:var(--soft)}
+nav a{color:inherit;text-decoration:none}nav a:hover{color:var(--moss)}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding-block:24px 64px}
+.hero>*{min-width:0}
+.hero .txt{display:grid;gap:22px}
+.stage{position:relative;aspect-ratio:1;max-width:100%}
+.stage img{position:absolute;inset:14%;width:72%;height:72%;object-fit:cover;border-radius:50%;transition:opacity .6s}
+#wheel{position:absolute;inset:0;width:100%;height:100%}
+#wheel path{cursor:pointer;transition:opacity .3s}
+#wheel path:focus{outline:none;stroke:var(--ink);stroke-width:3}
+#wheel text{pointer-events:none;font:700 13px var(--body);fill:#FBF7EE}
+.now{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 28px;border-radius:40px;font-weight:500;text-decoration:none;border:1.5px solid var(--moss);color:var(--moss)}
+.btn.fill{background:var(--moss);color:var(--bg)}
+section{padding-block:72px}
+.band{background:var(--paper)}
+.head{display:grid;gap:12px;margin-bottom:32px}
+.mapbox{position:relative;border-radius:28px;overflow:hidden;background:var(--card)}
+.mapimg{position:relative}.mapimg>img{display:block;width:100%;height:auto}
+.pin{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;border:2px solid transparent;background:transparent;cursor:pointer;padding:0}
+.pin:hover,.pin:focus-visible{border-color:#FBF7EE;outline:none}
+.pin.on{border-color:#E3B95F;box-shadow:0 0 0 6px rgba(227,185,95,.45),0 0 24px 8px rgba(227,185,95,.55);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(227,185,95,.25),0 0 30px 12px rgba(227,185,95,.35)}}
+.mapbox .pl circle.dot{fill:var(--soft);transition:all .4s}
+.mapbox .pl text{font:500 15px var(--body);fill:var(--soft)}
+.mapbox .pl.on circle.dot{fill:var(--gold)}.mapbox .pl.on text{fill:var(--ink);font-weight:700}
+.mapbox .pl .halo{fill:var(--glow);opacity:0;transition:opacity .4s}.mapbox .pl.on .halo{opacity:.4}
+.mapbox .pl{cursor:pointer}
+.popup{position:absolute;right:24px;bottom:24px;width:min(340px,calc(100% - 48px));background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)}
+.popup img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.popup div{padding:16px 20px;display:grid;gap:6px}
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.room{display:grid;gap:12px}
+.flip{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;max-width:100%}
+.flip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s}
+.flip img.r{opacity:0}.flip.show img.r{opacity:1}
+.tog{display:flex;gap:6px;position:absolute;left:12px;bottom:12px}
+.tog button{font:700 11px var(--body);letter-spacing:.08em;text-transform:uppercase;border:0;border-radius:20px;padding:7px 12px;background:rgba(251,247,238,.85);color:#2B2A24;cursor:pointer}
+.tog button[aria-pressed="true"]{background:#3E5A3A;color:#FBF7EE}
+.fest{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.f{background:var(--card);border-radius:16px;overflow:hidden;display:grid}
+.f img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:transform .6s}.f:hover img{transform:scale(1.04)}.f{overflow:hidden}
+.f div{padding:14px 18px;display:grid;gap:2px}
+.f b{font-family:var(--display);font-size:22px;font-weight:600}
+.f small{color:var(--soft);font-size:13px}.f i{font-style:normal;color:var(--moss);font-size:13px;font-weight:500}
+.quote{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:center}
+.quote img{width:100%;mix-blend-mode:multiply;border-radius:8px}
+.quote blockquote{margin:0;font:italic 400 clamp(30px,4vw,48px)/1.15 var(--display)}
+footer{background:#2E3A2C;color:#E8DFC9;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:32px}
+footer em{color:#D9B565;font-style:normal;font-weight:500}
+.ai{font-size:11px;color:var(--soft);letter-spacing:.04em}
+.stage,.flip,.f,.vig{position:relative}
+.mapbox{display:grid;grid-template-columns:minmax(0,3fr) minmax(240px,1fr);align-items:stretch}
+.mapbox .popup{position:relative;right:auto;bottom:auto;width:auto;box-shadow:none;border-radius:0}
+.aib{position:absolute;top:10px;right:10px;z-index:3;font:700 10px/1 var(--body);letter-spacing:.06em;padding:5px 8px;border-radius:12px;background:rgba(43,42,36,.78);color:#FBF7EE;pointer-events:none}
+.stage .aib{top:16%;right:16%}
+.follow{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.ev{display:grid;gap:4px;background:var(--card);border-radius:14px;padding:16px 18px}
+.ev b{font-family:var(--display);font-size:21px;font-weight:600}.ev small{color:var(--soft);font-variant-numeric:tabular-nums}
+.ev a{font-size:13px;font-weight:700;color:var(--moss);text-decoration:none;margin-top:4px}.ev a:hover{text-decoration:underline}
+.followbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:20px}
+#copyall{font:500 15px var(--body);padding:12px 22px;border-radius:40px;border:1.5px solid var(--moss);background:transparent;color:var(--moss);cursor:pointer}
+@media (max-width:860px){.hero,.quote{grid-template-columns:1fr}.rooms{grid-template-columns:1fr}.fest{grid-template-columns:1fr 1fr}.mapbox{grid-template-columns:1fr}.quote img{max-width:160px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<div class="wrap">
+<nav><b>VRI.EARTH</b><div><a href="#aret">Året</a><a href="#platsen">Platsen</a><a href="#rum">Rummen</a><a href="#hogtider">Högtiderna</a><a href="#folj">Följ året</a><a href="#besok">Besök</a></div></nav>
+<header class="hero" id="aret">
+ <div class="txt">
+  <span class="eyebrow">Vreta Solglänta · Uppsala</span>
+  <h1>Året vrider sig.<br>Platsen&nbsp;öppnar&nbsp;sig.</h1>
+  <p>Välj en månad på hjulet. Bilden i mitten byter årstid och kartan nedanför visar var på Vreta den månaden lever.</p>
+  <div class="now"><a class="btn fill" href="#platsen" id="cta">Se vad som händer i november →</a></div>
+  <p style="font-size:14px">Allt är öppet för allmänheten och fullbokat till sommaren 2027. Följ året här, sidan följer månaderna.</p>
+ </div>
+ <div class="stage"><img id="heroimg" src="img/gasthuset.jpg" alt="Gästhuset och långbordet under eken i novemberskymning"><svg id="wheel" viewBox="0 0 500 500" role="group" aria-label="Årets hjul"></svg></div>
+</header>
+</div>
+
+<section class="band" id="platsen"><div class="wrap">
+ <div class="head"><span class="eyebrow" id="mlabel">November</span><h2 id="mtitle">Vreta i mörkrets månad</h2><p id="mtext"></p></div>
+ <div class="mapbox">
+  <div class="mapimg"><img src="img/karta.jpg" alt="Illustrerad karta över Vreta Solglänta med tio platser"><div id="pins"></div><span class="aib" title="Generated by AI, Directed by MS">AI</span></div>
+  <div class="popup"><img id="pimg" src="img/gasthuset.jpg" alt="Vald plats på Vreta"><div><span class="eyebrow" id="pk">Torpet</span><h3 id="ph">Vinterträdgården</h3><p id="pp">45 kvm med öppen spis i granit och två uteverandor under tak.</p></div></div>
+ </div>
+ <p class="ai" style="margin-top:12px">Klicka på en plats på kartan. Illustrationer: Generated by AI, Directed by MS</p>
+</div></section>
+
+<section id="rum"><div class="wrap">
+ <div class="head"><span class="eyebrow">Inne på Vreta</span><h2>Rum att stanna i</h2><p>Tre av platsens rum, så som de ser ut i höst.</p></div>
+ <div class="rooms">
+  <div class="room"><div class="flip show"><img src="img/orangeriet.jpg" alt="Illustration av Orangeriet"><img class="r" src="img/orangeriet_inne.jpg" alt="Rendering inne i Orangeriet med meditationsloftet"><div class="tog"><button aria-pressed="false">Illustration</button><button aria-pressed="true">Rendering</button></div></div><span class="eyebrow">Orangeriet</span><h3>Meditationsloftet</h3><p>Loftet med meditationsrum i orangeriet på nordsidan. Nedanför finns kök och två rum, varav ett altarrum.</p></div>
+  <div class="room"><div class="flip"><img src="img/ateljeerna.jpg" alt="Rendering inne i Ateljéerna med vävstol, staffli och keramikstudio"></div><span class="eyebrow">Ateljéerna</span><h3>Studiorna</h3><p>Målarstudio, sömnadsstudio med vävstol och den inglasade keramikstudion med stora ugnen.</p></div>
+  <div class="room"><div class="flip"><img src="img/golen.jpg" alt="Tipin bland björkarna bakom gölen i novembersol"></div><span class="eyebrow">Tipin</span><h3>Tipin för 40</h3><p>I söder, mellan verkstaden och gölen. Rymmer 40 personer.</p></div>
+ </div>
+</div></section>
+
+<section id="folj"><div class="wrap">
+ <div class="head"><span class="eyebrow">Följ Vreta genom året</span><h2>Ta med året hem</h2><p>Allt är fullbokat till sommaren 2027, men året går att följa. Lägg Vretas dagar i din egen kalender, så påminns du när ljusen tänds, när marknaden öppnar och när nästa varv börjar.</p></div>
+ <div class="follow" id="evs"></div>
+ <div class="followbar"><button id="copyall" type="button">Kopiera alla datum</button><span id="copymsg" class="ai" role="status"></span></div>
+</div></section>
+<section class="band" id="hogtider"><div class="wrap">
+ <div class="head"><span class="eyebrow">Årets hjul</span><h2>Högtiderna</h2></div>
+ <div class="fest">
+  <div class="f"><img src="img/h_solstand.jpg" alt="Akvarell: vintersolståndets eld i snön framför orangeriet"><div><b>Vintersolståndet</b><small>21–22 dec</small><i>Vaka vid elden i ängen</i></div></div>
+  <div class="f"><img src="img/h_kyndel.jpg" alt="Akvarell: bivaxljus som torkar i ateljén vid kyndelsmäss"><div><b>Kyndelsmäss</b><small>7 feb</small><i>Ljusstöpning</i></div></div>
+  <div class="f"><img src="img/h_valborg.jpg" alt="Akvarell: valborgsbrasan vid tipin och dammen"><div><b>Valborg</b><small>30 april</small><i>Valborgsmässoafton</i></div></div>
+  <div class="f"><img src="img/h_midsommar.jpg" alt="Akvarell: midsommarstången och långbordet under eken"><div><b>Midsommar</b><small>21–26 juni</small><i>Midsommarveckan</i></div></div>
+ </div>
+</div></section>
+
+<section id="besok"><div class="wrap quote">
+ <div class="vig"><img src="img/tralslanda.jpg" alt="Plansch: trollsländor vid dammen"></div>
+ <div style="display:grid;gap:18px"><span class="eyebrow">Där det började</span><blockquote>”Vi vill bidra till mer liv än vi tar i anspråk.”</blockquote>
+ <p>Vreta Solglänta är en plats under uppbyggnad utanför Uppsala, där Vreta Regenerative Initiative bygger om, odlar och samlas genom året. Bakom står Mattias Seger. Ombyggnaden pågår, och sidan växer med platsen.</p>
+ <p>Alla aktiviteter är öppna för allmänheten och fullbokade till sommaren 2027. Egen mat och fika är välkommen. Hundar hålls kopplade, utom Freja. Vi ses på nästa varv.</p></div>
+</div></section>
+
+<footer><div class="wrap"><span>Vreta Regenerative Initiative · Vreta Solglänta, Uppsala</span><em>Generated by AI, Directed by MS</em></div></footer>
+
+<script>
+const M=["Januari","Februari","Mars","April","Maj","Juni","Juli","Augusti","September","Oktober","November","December"];
+const C=["#3B4A63","#55627A","#7E9A6B","#9DB37A","#C9C27A","#E3B95F","#D99A4E","#C27A44","#A86B3C","#8A5A3B","#5E4A4A","#3A3A52"];
+const IMG={0:"m_jan",1:"h_kyndel",2:"m_mar",3:"h_valborg",5:"h_midsommar",7:"m_aug",8:"m_sep",9:"m_okt",10:"gasthuset",11:"h_solstand"};
+// Caféet och shopen döljs tills vidare. Sätt VISA_CAFE till true för att visa dem igen.
+const VISA_CAFE=false;
+const MD={10:["Mörkermånen på Vreta","Arbetet flyttar in till verkstäderna, köket och orangeriet. Mårtensgås i orangeriet 10 nov, vinterkurs i smide och täljning 21–22 nov, morgon vid dammen 24 nov och adventsmarknad 28–29 nov"+(VISA_CAFE?", när caféet öppnar igen.":"."),["Orangeriet","Verkstaden","Dammen","Caféet & shopen"]],
+11:["Vintermånen på Vreta","Orangeriet är decembers hjärta. Julmarknad i verkstäderna 12 dec, luciatåget ned till dammen 13 dec och julbord i orangeriet 18–19 dec.",["Orangeriet","Verkstaden","Dammen","Caféet & shopen"]]};
+const P=[["Caféet & shopen",18.6,37.7,"cafe","Vagnslidret vid entrén","Caféet med veckomenyn, pralinbordet och säsongens råvaror."],["Verkstaden",20,71.3,"verkstaden","Två stålförråd under sedum","Snickarverkstaden i södra hörnet, nedanför shopen."],["Tipin",49.3,73.4,"lavvu","Tipin för 40","Mellan verkstaden och gölen, med eld i mitten."],["Gölen",67.6,75,"golen","Gölen","20 kvm vatten med trollsländor om sommaren."],["Ateljéerna",55.7,44,"ateljeerna","Studiorna","Målning, sömnad, vävstol och keramikugn. Uteköket och baren mot innergården."],["Växthuset",22.1,22,"vaxthuset","Växthuset","Ca 70 kvm under höga spröjsade fönster."],["Dammen",41.4,16.8,"k_dammen","Dammen","125 kvm mellan växthuset och orangeriet."],["Orangeriet",64.3,12.6,"orangeriet_inne","Orangeriet","Kök, altarrum och meditationsloft på nordsidan."],["Gästhuset",86.4,15.7,"gasthuset","Gästhuset och långbordet","Två sovrum och loft vid den lutande eken."],["Torpet",87.4,41.5,"k_torpet","Vinterträdgården","45 kvm med öppen spis i granit och två uteverandor under tak."]];
+const ns="http://www.w3.org/2000/svg",el=(t,a)=>{const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+const pins=document.getElementById("pins");
+if(!VISA_CAFE){const k=P.findIndex(p=>p[0]==="Caféet & shopen");if(k>=0)P.splice(k,1);for(const m in MD)MD[m][2]=MD[m][2].filter(n=>n!=="Caféet & shopen");}
+P.forEach((p,i)=>{const b=document.createElement("button");b.className="pin pl";b.dataset.n=p[0];b.setAttribute("aria-label",p[0]);b.style.left=p[1]+"%";b.style.top=p[2]+"%";b.onclick=()=>show(i);pins.append(b)});
+function show(i){const p=P[i];pimg.hidden=!p[3];if(p[3])pimg.src="img/"+p[3]+".jpg";document.querySelector(".popup .aib")&&(document.querySelector(".popup .aib").hidden=!p[3]);pk.textContent=p[0];ph.textContent=p[4];pp.textContent=p[5]}
+const W=document.getElementById("wheel");
+function arc(a0,a1,r0,r1){const c=250,p=(r,a)=>[c+r*Math.cos(a),c+r*Math.sin(a)];const[x0,y0]=p(r1,a0),[x1,y1]=p(r1,a1),[x2,y2]=p(r0,a1),[x3,y3]=p(r0,a0);return`M${x0} ${y0}A${r1} ${r1} 0 0 1 ${x1} ${y1}L${x2} ${y2}A${r0} ${r0} 0 0 0 ${x3} ${y3}Z`}
+M.forEach((m,i)=>{const a0=(i*30-105)*Math.PI/180,a1=((i+1)*30-106)*Math.PI/180;const s=el("path",{d:arc(a0,a1,182,246),fill:C[i],tabindex:0,"aria-label":m});s.addEventListener("click",()=>pick(i));s.addEventListener("keydown",e=>{if(e.key==="Enter")pick(i)});W.append(s);const am=(a0+a1)/2,t=el("text",{x:250+214*Math.cos(am),y:254+214*Math.sin(am),"text-anchor":"middle"});t.textContent=m.slice(0,3);W.append(t)});
+function pick(i){[...W.querySelectorAll("path")].forEach((s,j)=>s.style.opacity=j===i?1:.55);
+ const im=document.getElementById("heroimg");im.style.opacity=0;const src=IMG[i]||"karta";setTimeout(()=>{im.src="img/"+src+".jpg";im.alt="Vreta i "+M[i].toLowerCase();im.style.opacity=1},300);
+ const d=MD[i]||["Vreta i "+M[i].toLowerCase(),"Månadens program läggs in här när kalendern för 2027 är klar.",[]];
+ mlabel.textContent=M[i];mtitle.textContent=d[0];mtext.textContent=d[1];cta.textContent="Se vad som händer i "+M[i].toLowerCase()+" →";
+ document.querySelectorAll(".pl").forEach(g=>g.classList.toggle("on",d[2].includes(g.dataset.n)));
+ const first=P.findIndex(p=>p[0]===d[2][0]);if(first>=0)show(first)}
+pick(new Date().getMonth());
+const EV=[["Mårtensgås i orangeriet","20261110","20261111"],["Vinterkurs i smide och täljning","20261121","20261123"],["Mörkermånen: morgon vid dammen","20261124","20261125"],[VISA_CAFE?"Adventsmarknad, caféet öppnar":"Adventsmarknad","20261128","20261130"],["Julmarknaden i verkstäderna","20261212","20261213"],["Lucia: tåget ned till dammen","20261213","20261214"],["Julbord i orangeriet","20261218","20261220"],["Vintersolståndsvaka vid elden","20261221","20261223"],["Kyndelsmäss: ljusstöpning","20270207","20270208"],["Valborg","20270430","20270501"],["Midsommarveckan","20270621","20270627"]];
+const fmt=d=>new Date(d.slice(0,4)+"-"+d.slice(4,6)+"-"+d.slice(6)).toLocaleDateString("sv-SE",{day:"numeric",month:"long",year:"numeric"});
+const evs=document.getElementById("evs");
+const today=new Date().toISOString().slice(0,10).replace(/-/g,"");
+EV.filter(e=>e[2]>today).forEach(([t,a,b])=>{const end=new Date(b.slice(0,4)+"-"+b.slice(4,6)+"-"+b.slice(6));end.setDate(end.getDate()-1);const last=end.toISOString().slice(0,10).replace(/-/g,"");
+ const when=a===last?fmt(a):fmt(a)+" – "+fmt(last);
+ const url="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(t+" – Vreta Solglänta")+"&dates="+a+"/"+b+"&location="+encodeURIComponent("Vreta Solglänta, Uppsala")+"&details="+encodeURIComponent("Fullbokat till sommaren 2027. vri.earth");
+ const d=document.createElement("div");d.className="ev";d.innerHTML="<b></b><small></small><a target=\"_blank\" rel=\"noopener\">Lägg i Google Kalender →</a>";d.querySelector("b").textContent=t;d.querySelector("small").textContent=when;d.querySelector("a").href=url;evs.append(d)});
+document.getElementById("copyall").onclick=async()=>{const txt="Vreta Solglänta – året\n"+[...evs.children].map(e=>e.querySelector("small").textContent+": "+e.querySelector("b").textContent).join("\n");
+ try{await navigator.clipboard.writeText(txt);copymsg.textContent="Datumen är kopierade."}catch(e){copymsg.textContent="Kunde inte kopiera. Markera listan ovan och kopiera den.";}};
+
+document.querySelectorAll(".stage,.popup,.flip,.f,.vig").forEach(p=>{const b=document.createElement("span");b.className="aib";b.textContent="AI";b.title="Generated by AI, Directed by MS";p.append(b)});
+document.querySelectorAll(".flip").forEach(f=>{const bs=f.querySelectorAll("button");if(bs.length<2)return;const[b1,b2]=bs;b1.onclick=()=>{f.classList.remove("show");b1.setAttribute("aria-pressed","true");b2.setAttribute("aria-pressed","false")};b2.onclick=()=>{f.classList.add("show");b2.setAttribute("aria-pressed","true");b1.setAttribute("aria-pressed","false")}});
+</script>
+
+</body>
+</html>
