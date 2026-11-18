@@ -172,7 +172,7 @@
       const c = segColor(M.o, i), on = i + 1 === sel;
       const lp = labelPos(i, on ? 7 : 0);
       const abbr = (M.lang === 'en' ? MNS.en : MNS.sv)[i];
-      segs += `<g class="aj-seg${on ? ' on' : ''}" role="button" tabindex="${on ? 0 : -1}" aria-pressed="${on}" aria-label="${esc(segLabel(M, i))}" data-aj-m="${i + 1}">
+      segs += `<g class="aj-seg${on ? ' on' : ''}" role="radio" tabindex="${on ? 0 : -1}" aria-checked="${on}" aria-label="${esc(segLabel(M, i))}" data-aj-m="${i + 1}">
         <path class="aj-p" d="${wedge(i, on ? 7 : 0)}" style="fill:${c.fill}"/></g>`;
       labels += `<text x="${f1(lp[0])}" y="${f1(lp[1] + 5.5)}" text-anchor="middle" class="aj-ab" style="fill:${c.ink}" data-aj-ab="${i + 1}">${abbr}</text>`;
     }
@@ -186,15 +186,14 @@
       fest += `<text class="aj-fl" x="${f1(lp[0])}" y="${f1(lp[1] + dy)}" text-anchor="${anchor}">${esc(f.name)}</text>`;
     });
     // dagens position
-    const ta = angOf(t.y, t.m, t.d), n0 = pt(ta, RO - 16), n1 = pt(ta, RO + 4);
-    const tip = [pt(ta, RO + 9), pt(ta + 0.045, RO + 1), pt(ta - 0.045, RO + 1)].map(p => `${f1(p[0])},${f1(p[1])}`).join(' ');
-    const needle = `<g class="aj-now" aria-hidden="true"><line x1="${f1(n0[0])}" y1="${f1(n0[1])}" x2="${f1(n1[0])}" y2="${f1(n1[1])}" class="u"/><line x1="${f1(n0[0])}" y1="${f1(n0[1])}" x2="${f1(n1[0])}" y2="${f1(n1[1])}" class="o"/><polygon points="${tip}" class="tip"/></g>`;
+    const ta = angOf(t.y, t.m, t.d), n0 = pt(ta, RO - 7), n1 = pt(ta, RO + 10);
+        const needle = `<g class="aj-now" aria-hidden="true"><line x1="${f1(n0[0])}" y1="${f1(n0[1])}" x2="${f1(n1[0])}" y2="${f1(n1[1])}" class="u"/><line x1="${f1(n0[0])}" y1="${f1(n0[1])}" x2="${f1(n1[0])}" y2="${f1(n1[1])}" class="o"/></g>`;
     const tname = (M.lang === 'en' ? MNS.en : MNS.sv)[t.m - 1];
     const centre = `<g class="aj-c" aria-hidden="true"><circle cx="${CX}" cy="${CY}" r="${RI - 7}" class="aj-cd"/>
       <text x="${CX}" y="${CY - 10}" text-anchor="middle" class="aj-cm" data-aj-cm>${esc(M.moons[sel - 1])}</text>
       <text x="${CX}" y="${CY + 14}" text-anchor="middle" class="aj-cn" data-aj-cn>${esc((M.lang === 'en' ? MN.en : MN.sv)[sel - 1].toUpperCase())}</text>
-      <text x="${CX}" y="${CY + 38}" text-anchor="middle" class="aj-ct">${esc(S.todayCap)} ${t.d} ${tname}</text></g>`;
-    return `<svg class="aj-svg" viewBox="${narrow() ? VB_NARROW : VB_WIDE}" role="toolbar" aria-orientation="horizontal" aria-label="${esc(S.group)}" focusable="false">
+      <text x="${CX}" y="${CY + 38}" text-anchor="middle" class="aj-ct">${esc(S.todayCap)} ${t.d} ${esc((M.lang === 'en' ? MN.en : MN.sv)[t.m - 1])}</text></g>`;
+    return `<svg class="aj-svg" viewBox="${narrow() ? VB_NARROW : VB_WIDE}" role="radiogroup" aria-label="${esc(S.group)}" focusable="false">
       <circle cx="${CX}" cy="${CY}" r="${RO + 24}" class="aj-disc"/>
       <circle cx="${CX}" cy="${CY}" r="${RO}" class="aj-rim"/><circle cx="${CX}" cy="${CY}" r="${RI}" class="aj-rim"/>
       <g class="aj-fests" aria-hidden="true">${fest}</g>
@@ -242,7 +241,7 @@
     sec.querySelectorAll('.aj-seg').forEach(g => {
       const i = +g.dataset.ajM, on = i === m;
       g.classList.toggle('on', on);
-      g.setAttribute('aria-pressed', String(on));
+      g.setAttribute('aria-checked', String(on));
       g.setAttribute('tabindex', on ? '0' : '-1');
       g.querySelector('.aj-p').setAttribute('d', wedge(i - 1, on ? 7 : 0));
     });
@@ -252,7 +251,7 @@
     if (cn) cn.textContent = (M.lang === 'en' ? MN.en : MN.sv)[m - 1].toUpperCase();
     sec.querySelector('[data-aj-card]').innerHTML = cardHTML(M, m);
     const fs = M.fester.filter(f => f.at.m === m).map(f => f.name);
-    sec.querySelector('[data-aj-live]').textContent = `${M.S.chosen}: ${cap(M.lang === 'en' ? MN.en[m - 1] : MN.sv[m - 1])}, ${M.moons[m - 1]}${fs.length ? '. ' + fs.join(', ') : ''}.`;
+    sec.querySelector('[data-aj-live]').textContent = `${M.S.chosen}: ${M.lang === 'en' ? cap(MN.en[m - 1]) : MN.sv[m - 1]}, ${M.moons[m - 1]}${fs.length ? '. ' + fs.join(', ') : ''}.`;
     const g = sec.querySelector(`.aj-seg[data-aj-m="${m}"]`);
     if (focus && g && document.activeElement !== g) g.focus();
     showFocus(sec);
