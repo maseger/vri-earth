@@ -539,15 +539,15 @@ details summary{cursor:pointer;font:600 15px/22px var(--sans);color:var(--text-h
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://vri.earth/#org", "name": "Vreta Solglänta", "alternateName": "Vreta Regenerative Initiative", "url": "https://vri.earth/", "email": "hej@vri.earth", "logo": "https://vri.earth/img/vreta-mark.svg"}, {"@type": "Place", "@id": "https://vri.earth/#place", "name": "Vreta Solglänta", "description": "A regenerative place in an enclosed forest glade outside Uppsala, with a forest garden, growing, reuse and workshops.", "address": {"@type": "PostalAddress", "addressLocality": "Uppsala", "addressRegion": "Uppsala County", "addressCountry": "SE"}}, {"@type": "WebSite", "@id": "https://vri.earth/en/#site", "url": "https://vri.earth/en/", "name": "Vreta Solglänta", "inLanguage": "en", "publisher": {"@id": "https://vri.earth/#org"}, "translationOfWork": {"@id": "https://vri.earth/#site"}}]}</script>
 <link rel="stylesheet" href="/css/arshjul.css"><!-- ÅRSHJUL -->
-</head><body><noscript><div style="max-width:40em;margin:2em auto;padding:0 1em;font-family:Georgia,serif;line-height:1.5"><h1>Vreta Solglänta</h1><p>En regenerativ plats i en skogsglänta utanför Uppsala: skogsträdgård, damm, äng, verkstäder and ett långbord under eken. Sajten behöver JavaScript för att visa böckerna, kartan and kalendern.</p><p>We welcome small groups. Write to Vreta Solglänta · <a href="mailto:hej@vri.earth">hej@vri.earth</a>.</p><p><a href="/" hreflang="sv" lang="sv">På svenska</a></p></div></noscript>
+</head><body><noscript><div style="max-width:40em;margin:2em auto;padding:0 1em;font-family:Georgia,serif;line-height:1.5"><h1>Vreta Solglänta</h1><p>A regenerative place in a forest glade outside Uppsala: forest garden, pond, meadow, workshops and a long table under the oak. The site needs JavaScript to show the books, the map and the calendar.</p><p>We welcome small groups. Write to Vreta Solglänta · <a href="mailto:hej@vri.earth">hej@vri.earth</a>.</p><p><a href="/" hreflang="sv" lang="sv">På svenska</a></p></div></noscript>
 
 <a class="skip" href="#innehall" id="skiplink">Skip to content</a>
 <header class="hdr" id="hdr">
   <div class="hdr-in">
     <a class="logo" href="#" aria-label="Vreta Regenerative Initiative, to the home page"><img id="logo" src="/img/vreta-lockup.svg" alt="Vreta Regenerative Initiative" width="190" height="38"></a>
-    <nav class="nav" aria-label="Huvudnavigation">
+    <nav class="nav" aria-label="Main navigation">
       <a href="#solglanta" data-nav="solglanta">The Place</a>
-      <a href="#rummen" data-nav="rummen">The rooms</a>
+      <a href="#rummen" data-nav="rummen">The Rooms</a>
       <a href="#aret" data-nav="aret">The Year</a>
       <a href="#samlingen" data-nav="samlingen">The Collection</a>
       <a href="#besok" data-nav="besok">Visit</a>
@@ -564,11 +564,11 @@ details summary{cursor:pointer;font:600 15px/22px var(--sans);color:var(--text-h
 <nav class="tabs" id="tabs" aria-label="The eleven books"></nav>
 <main id="innehall" tabindex="-1"><div class="loading">The Place vaknar …</div></main>
 <footer class="foot" id="foot"></footer>
-<div class="spine" id="spine"><button class="spine-btn" type="button" id="spinebtn" aria-expanded="false" aria-controls="spinesheet"><span>Böckerna</span><span class="spine-bars" id="spinebars" aria-hidden="true"></span><span aria-hidden="true">▴</span></button></div>
+<div class="spine" id="spine"><button class="spine-btn" type="button" id="spinebtn" aria-expanded="false" aria-controls="spinesheet"><span>Books</span><span class="spine-bars" id="spinebars" aria-hidden="true"></span><span aria-hidden="true">▴</span></button></div>
 <div class="sheet" id="menysheet" role="dialog" aria-modal="true" aria-label="Menu"><div class="sheet-bg" data-close></div><div class="sheet-p">
   <button class="ico sheet-x" type="button" data-close aria-label="Close">✕</button>
   <span class="eyebrow">Menu</span>
-  <nav aria-label="Menu"><a href="#">The plot right now</a><a href="#solglanta">The Place</a><a href="#rummen">The rooms</a><a href="#aret">The Year</a><a href="#samlingen">The Collection</a><a href="#karta">Map</a><a href="#besok">Visit</a><a href="#om">About</a></nav>
+  <nav aria-label="Menu"><a href="#">The plot right now</a><a href="#solglanta">The Place</a><a href="#rummen">The Rooms</a><a href="#aret">The Year</a><a href="#samlingen">The Collection</a><a href="#karta">Map</a><a href="#besok">Visit</a><a href="#om">About</a></nav>
   <p style="margin-top:24px" class="small muted">Ljus</p>
   <span class="seg" role="group" aria-label="Light"><button type="button" data-tid="dag" aria-pressed="false">Day</button><button type="button" data-tid="natt" aria-pressed="false">Night</button><button type="button" data-tid="sol" aria-pressed="true">Follow the sun</button></span>
 </div></div>
@@ -626,7 +626,7 @@ const BOOKS = [
   {n:3,id:'motesplatsen',t:'The Meeting Place',s:'juni',rum:'The tipi',dir:'in the south',ak:'vy-tipi-skymning.jpg',sign:'The room shapes the meeting.'},
   {n:4,id:'koken',t:'The Kitchens',s:'september',rum:'The cottage',dir:'in the east',ak:'akvarell-detalj-torpet.jpg',sign:'Lay the table for more.'},
   {n:5,id:'boendet',t:'Accommodation',s:'februari',rum:'The guest house and the loft',dir:'in the north',ak:'akvarell-detalj-langbordet.jpg',sign:'Welcome to stay.'},
-  {n:6,id:'cafeet-and-shopen',t:'The Café and the Shop',s:'gryningen',rum:'The gate',dir:'by the entrance',ak:'akvarell-detalj-kafeet-butiken.jpg',sign:'Welcome in.'},
+  {n:6,id:'cafeet-och-shopen',t:'The Café and the Shop',s:'gryningen',rum:'The gate',dir:'by the entrance',ak:'akvarell-detalj-kafeet-butiken.jpg',sign:'Welcome in.'},
   {n:7,id:'odlingen',t:'The Garden',s:'juli',rum:'The greenhouse',dir:'in the north-west',ak:'akvarell-detalj-vaxthuset.jpg',sign:'Sow, wait, harvest.'},
   {n:8,id:'verktygen',t:'The Tools',s:'november',rum:'The tool wall',dir:'in the south corner',ak:'akvarell-detalj-aterbruk.jpg',sign:'Look around first.'},
   {n:9,id:'andligheten',t:'The Spirit',s:null,rum:'The pond',dir:'in the west',ak:'akvarell-detalj-dammen.jpg',sign:'Welcome here.'},
@@ -635,16 +635,16 @@ const BOOKS = [
 ];
 const BK = Object.fromEntries(BOOKS.map(b => [b.id, b]));
 const BOOK_BY_TITLE = Object.fromEntries(BOOKS.map(b => [b.t, b]));
-const WALK = ['cafeet-and-shopen','verkstaderna','verktygen','motesplatsen','odlingen','andligheten','boendet','koken'];
+const WALK = ['cafeet-och-shopen','verkstaderna','verktygen','motesplatsen','odlingen','andligheten','boendet','koken'];
 const WALKTXT = {
-  'cafeet-and-shopen':['Grinden','The open door of the place. You need no errand – it is enough to be thirsty.','Welcome in.','vid infarten'],
-  'verkstaderna':['Verkstaden','Where surplus becomes value and every load is a meeting.','Hands that make.','to the south'],
+  'cafeet-och-shopen':['The gate','The open door of the place. You need no errand – it is enough to be thirsty.','Welcome in.','by the entrance'],
+  'verkstaderna':['The workshop','Where surplus becomes value and every load is a meeting.','Hands that make.','to the south'],
   'verktygen':['The tool wall','A hundred hacks and fifty-one more. Look around before you buy.','Look around first.','in the south corner'],
-  'motesplatsen':['Tipin','A ring around the fire, where nobody sits at the front.','The room shapes the meeting.','in the south'],
+  'motesplatsen':['The tipi','A ring around the fire, where nobody sits at the front.','The room shapes the meeting.','in the south'],
   'odlingen':['The greenhouse','Food from a small place, on clay in zone three.','Sow, wait, harvest.','in the north-west'],
   'andligheten':['The pond','Another light, the same place.','Welcome here.','by the pond'],
-  'boendet':['The guest house and the loft','Twelve beds and a tipi. Whoever stays gets the silence thrown in.','Welcome to stay.','norrut'],
-  'koken':['Torpet','If you want to understand a place, go to the kitchen.','Lay the table for more.','to the east']
+  'boendet':['The guest house and the loft','Twelve beds and a tipi. Whoever stays gets the silence thrown in.','Welcome to stay.','to the north'],
+  'koken':['The Cottage','If you want to understand a place, go to the kitchen.','Lay the table for more.','to the east']
 };
 
 /* ============================================================ tid: sol and måne för Uppsala (NOAA) */
@@ -826,7 +826,7 @@ function swapPlates() {
   });
 }
 function hand(t) { return t ? `<span class="hand">${esc(t)}</span>` : ''; }
-function quote(t, src) { return `<blockquote class="quote">”${t}”${src ? `<cite>${src}</cite>` : ''}</blockquote>`; }
+function quote(t, src) { return `<blockquote class="quote">“${t}“${src ? `<cite>${src}</cite>` : ''}</blockquote>`; }
 function eb(t) { return `<span class="eyebrow">${t}</span>`; }
 function cardList(arr, o = {}) {
   return `<div class="grid ${o.cols || 'auto'}">${arr.map(c => `<div class="card ${o.cls || ''}">${o.num ? `<span class="st-num">${String(arr.indexOf(c) + 1).padStart(2, '0')}</span>` : ''}<h3>${String(c[0])}</h3><p>${c[1] || ''}</p></div>`).join('')}</div>`;
@@ -847,7 +847,7 @@ document.addEventListener('change', e => {
 function flow(s) { return `<div class="flow">${String(s).split('·').map(x => `<span>${esc(x.trim())}</span>`).join('<i aria-hidden="true">→</i>')}</div>`; }
 function nlist(arr) { return `<ol class="nlist">${arr.map(r => `<li>${r[0] ? `<b>${r[0]}</b> ` : ''}${r[1] || ''}</li>`).join('')}</ol>`; }
 function table(head, rows) {
-  return `<div class="tscroll" tabindex="0" role="region" aria-label="Tabell: ${esc(strip(head.join(', ')))}, scroll sideways"><table><thead><tr>${head.map(h => `<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map(c => `<td>${String(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  return `<div class="tscroll" tabindex="0" role="region" aria-label="Table: ${esc(strip(head.join(', ')))}, scroll sideways"><table><thead><tr>${head.map(h => `<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map(c => `<td>${String(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 function subnav(base, items, cur) {
   return `<div class="sub-wrap"><div class="wrap"><nav class="sub" aria-label="Sections">${items.map(([s, t]) => `<a href="#${base}${s ? '-' + s : ''}" ${cur === s ? 'aria-current="page"' : ''}>${t}</a>`).join('')}</nav></div></div>`;
@@ -868,22 +868,22 @@ function nextRoom(id) {
   const nt = n ? WALKTXT[n] : null;
   return `<div class="wrap"><div class="next">
     <div>${eb('The walk · room ' + (i + 1) + ' of 8')}${n ? `<a class="big" href="#${n}">Next room: ${nt[0]}, ${nt[3]} ${ARR}</a>` : `<a class="big" href="#solglanta">The walk is over. Go out into the grounds: Solglänta ${ARR}</a>`}</div>
-    <a class="btn btn-ghost" href="#cafeet-and-shopen">Back to the gate</a>
+    <a class="btn btn-ghost" href="#cafeet-och-shopen">Back to the gate</a>
   </div></div>`;
 }
 
 /* ============================================================ kartan: förenklad plan efter nybyggnadskartan */
 const PLACES = [
-  {id:'cafe',n:'The café and the shop',x:224,y:538,b:'cafeet-and-shopen',ak:'akvarell-detalj-kafeet-butiken.jpg',lx:-12,ly:-26,anc:'end',t:'By the entrance from the road, in the cart shed. All ways in begin here.'},
-  {id:'verkstaden',n:'Verkstaden',x:392,y:628,b:'verkstaderna',b2:'verktygen',ak:'akvarell-detalj-forradet-verkstad.jpg',lx:22,ly:6,anc:'start',t:'In the south corner, with the tool wall. Where surplus becomes value.'},
-  {id:'tipin',n:'Tipin',x:318,y:568,b:'motesplatsen',ak:'vy-tipi-skymning.jpg',lx:0,ly:-24,anc:'middle',t:'In the south, west of the tarn, near the workshop. A ring around the fire.'},
+  {id:'cafe',n:'The café and the shop',x:224,y:538,b:'cafeet-och-shopen',ak:'akvarell-detalj-kafeet-butiken.jpg',lx:-12,ly:-26,anc:'end',t:'By the entrance from the road, in the cart shed. All ways in begin here.'},
+  {id:'verkstaden',n:'The workshop',x:392,y:628,b:'verkstaderna',b2:'verktygen',ak:'akvarell-detalj-forradet-verkstad.jpg',lx:22,ly:6,anc:'start',t:'In the south corner, with the tool wall. Where surplus becomes value.'},
+  {id:'tipin',n:'The tipi',x:318,y:568,b:'motesplatsen',ak:'vy-tipi-skymning.jpg',lx:0,ly:-24,anc:'middle',t:'In the south, west of the tarn, near the workshop. A ring around the fire.'},
   {id:'golen',n:'The tarn',x:420,y:530,ak:'akvarell-detalj-golen.jpg',lx:0,ly:-20,anc:'middle',t:'The frogs’ nursery, about 25 m², in the south.'},
   {id:'ateljeerna',n:'The studios',x:384,y:356,b:'boendet',ak:'akvarell-detalj-ateljen.jpg',lx:0,ly:44,anc:'middle',t:'The house in the middle of the plot: the artists’ studio and the Studios.'},
   {id:'vaxthuset',n:'The greenhouse',x:332,y:204,b:'odlingen',ak:'akvarell-detalj-vaxthuset.jpg',lx:-24,ly:-14,anc:'end',t:'North of the pond, with the raised beds and the cold frames.'},
   {id:'dammen',n:'The pond',x:298,y:304,b:'andligheten',ak:'akvarell-detalj-dammen.jpg',lx:-30,ly:30,anc:'end',t:'In the western part of the plot, about 125 m², with granite boulders, an islet and the grass snake on its stone.'},
   {id:'orangeriet',n:'The Orangery',x:398,y:104,ak:'akvarell-detalj-orangeriet.jpg',lx:-22,ly:-6,anc:'end',t:'In the north corner. A glass house for citrus, meetings and the green room of winter.'},
-  {id:'gasthuset',n:'The guest house and the long table',x:452,y:158,b:'boendet',ak:'akvarell-detalj-langbordet.jpg',lx:26,ly:-10,anc:'start',t:'Formerly the store, to the north, with the long table under the ten-metre oak.'},
-  {id:'torpet',n:'Torpet',x:516,y:292,b:'koken',ak:'akvarell-detalj-torpet.jpg',lx:26,ly:6,anc:'start',t:'The house to the north-east: the everyday kitchen, with the outdoor kitchen and the fire places beside it.'}
+  {id:'gasthuset',n:'The guest house',x:452,y:158,b:'boendet',ak:'akvarell-detalj-langbordet.jpg',lx:26,ly:-10,anc:'start',t:'Formerly the store, to the north, with the long table under the ten-metre oak.'},
+  {id:'torpet',n:'The Cottage',x:516,y:292,b:'koken',ak:'akvarell-detalj-torpet.jpg',lx:26,ly:6,anc:'start',t:'The house to the north-east: the everyday kitchen, with the outdoor kitchen and the fire places beside it.'}
 ];
 const ROT = 30.4;
 function bld(cx, cy, w, h, cls) {
@@ -945,7 +945,7 @@ function mapSVG(o = {}) {
       <text x="${p.x + p.lx}" y="${p.y + p.ly}" text-anchor="${p.anc}" font-size="${o.small ? 14 : 13}" font-weight="600" fill="var(--map-label)" stroke="var(--map-glade)" stroke-width="4" paint-order="stroke">${esc(label)}</text></g>`;
   }).join('');
   return `<svg class="map" id="${id}" viewBox="40 20 680 700" role="group" aria-labelledby="${id}-t">
-  <title id="${id}-t">Simplified plan of Vreta Solglänta after the new-build map, north up, not to scale. ${PLACES.length} platser.</title>
+  <title id="${id}-t">Simplified plan of Vreta Solglänta after the new-build map, north up, not to scale. ${PLACES.length} places.</title>
   <defs>
     <filter id="${id}-wc" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".022" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9"/></filter>
     <filter id="${id}-paper"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 .3  0 0 0 0 .28  0 0 0 0 .2  0 0 0 .06 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
@@ -977,7 +977,7 @@ function mapSVG(o = {}) {
     <path d="M508,300 C450,330 380,330 342,312" stroke="#3C7FA0" stroke-width="2.2" fill="none" stroke-dasharray="5 4"/>
     <path d="M326,214 C318,236 312,250 306,262" stroke="#3C7FA0" stroke-width="2.2" fill="none" stroke-dasharray="5 4"/>
     <path d="M392,620 C405,595 412,575 418,560" stroke="#3C7FA0" stroke-width="2.2" fill="none" stroke-dasharray="5 4"/>
-    <g transform="translate(560 410)"><rect x="-13" y="-9" width="26" height="18" rx="3" fill="#8A6A43" stroke="#5A4636"/><text x="0" y="28" text-anchor="middle" font-size="11" fill="var(--map-label)" stroke="var(--map-glade)" stroke-width="3" paint-order="stroke">kompost</text></g>
+    <g transform="translate(560 410)"><rect x="-13" y="-9" width="26" height="18" rx="3" fill="#8A6A43" stroke="#5A4636"/><text x="0" y="28" text-anchor="middle" font-size="11" fill="var(--map-label)" stroke="var(--map-glade)" stroke-width="3" paint-order="stroke">compost</text></g>
     <path d="M590,250 C625,262 630,300 600,320 C580,300 575,270 590,250Z" fill="#7E9762" fill-opacity=".35" stroke="var(--map-label)" stroke-dasharray="3 3"/>
     <path d="M135,488 C160,470 190,470 196,490 C185,505 160,512 135,488Z" fill="#7E9762" fill-opacity=".35" stroke="var(--map-label)" stroke-dasharray="3 3"/>
     <text x="606" y="342" text-anchor="middle" font-size="11" fill="var(--map-label)" stroke="var(--map-glade)" stroke-width="3" paint-order="stroke">protected zone</text>
@@ -985,7 +985,7 @@ function mapSVG(o = {}) {
     <text x="470" y="455" text-anchor="middle" font-size="11" fill="var(--map-label)" stroke="var(--map-glade)" stroke-width="3" paint-order="stroke">forest garden</text>
   </g>
   <g class="lys" aria-hidden="true">${lights}</g>
-  <g transform="translate(247 596)"><path d="M-9,0 h18" stroke="var(--map-label)" stroke-width="3"/><text x="0" y="22" text-anchor="middle" font-size="11" font-weight="600" fill="var(--map-label)" stroke="var(--map-glade)" stroke-width="3" paint-order="stroke">infarten</text></g>
+  <g transform="translate(247 596)"><path d="M-9,0 h18" stroke="var(--map-label)" stroke-width="3"/><text x="0" y="22" text-anchor="middle" font-size="11" font-weight="600" fill="var(--map-label)" stroke="var(--map-glade)" stroke-width="3" paint-order="stroke">entrance</text></g>
   <g transform="translate(672 64)" aria-hidden="true"><circle r="20" fill="var(--map-glade)" opacity=".9"/><path d="M0,-15 L5,4 L0,0 L-5,4Z" fill="var(--map-label)"/><text y="16" text-anchor="middle" font-size="10" font-weight="700" fill="var(--map-label)">N</text></g>
   ${pl}
 </svg>`;
@@ -1130,7 +1130,7 @@ async function vHome() {
     : `
       ${eb(`Today at Vreta · ${p.wd} ${p.d} ${MN[p.m - 1]}`)}
       <p class="sky-big num">${p.d} ${MN[p.m - 1]}</p>
-      <p style="margin:0">The sun rises ${s.up ? tfmt(s.up) : '–'} and sets ${s.down ? tfmt(s.down) : '–'}. ${s.len ? lenfmt(s.len) + ' dagsljus.' : ''}<br>We call the full moon ${fullMoonName(fm)}. It is full ${fmP.d} ${MN[fmP.m - 1]}.</p>`;
+      <p style="margin:0">The sun rises ${s.up ? tfmt(s.up) : '–'} and sets ${s.down ? tfmt(s.down) : '–'}. ${s.len ? lenfmt(s.len) + ' of daylight.' : ''}<br>We call the full moon ${fullMoonName(fm)}. It is full ${fmP.d} ${MN[fmP.m - 1]}.</p>`;
   const skyRight = n ? `<div class="sky-lines">
       <p><span class="k">The moon tonight</span>${ph.name[0].toUpperCase() + ph.name.slice(1)}, ${Math.round(ph.illum * 100)} per cent lit. The new moon comes ${stockholmParts(nm).d} ${MN[stockholmParts(nm).m - 1]}: the time for an intention.</p>
       <p><span class="k">The month’s practice</span>${esc(am.ovning.titel)}. ${firstSentence(am.ovning.intro[0] || '')}</p>
@@ -1148,13 +1148,13 @@ async function vHome() {
      <div>${eb('Vreta Solglänta · outside Uppsala, near Ekoln')}
        <h1 tabindex="-1">A glade that grows richer every year.</h1>
        <p class="lead">Forest garden, pond, meadow, workshops and a long table under the oak on 3,700 square metres. The place tells what time it is. Come in through the gate and see what is happening here right now.</p>
-       <div class="row" style="margin-top:24px"><a class="btn btn-primary" href="#cafeet-and-shopen">Come in through the gate ${ARR}</a><a class="btn btn-ghost" href="${n ? '#i-natt' : '#i-dag'}">${n ? 'See what is happening tonight' : 'See what is happening today'}</a></div>
+       <div class="row" style="margin-top:24px"><a class="btn btn-primary" href="#cafeet-och-shopen">Come in through the gate ${ARR}</a><a class="btn btn-ghost" href="${n ? '#i-natt' : '#i-dag'}">${n ? 'See what is happening tonight' : 'See what is happening today'}</a></div>
        ${quote('We want to contribute more life than we take up.', 'Solglänta, epigraph')}
        ${hand('Welcome to Vreta.')}</div>
      <div>${drv('karta.jpg', 'Vreta in November, ten places', { full: 1, eager: 1 })}<p class="small" style="margin-top:6px"><a href="#karta">The clickable plan, after the new-build map ${ARR}</a></p></div>
    </div></div>`;
   const places = `<section><div class="wrap">
-     ${eb('Tomten')}<h2>Ten places in a forest glade</h2>
+     ${eb('The plot')}<h2>Ten places in a forest glade</h2>
      <p class="lead">North is up, and the road runs along the south-west side with the lilac hedge and the entrance in the middle.</p>
      <div class="twocol r" style="margin-top:20px"><div>${mapBlock({ id: 'hemkarta', small: 1 })}</div><div><p>Click a place to see it and go in. The plan is simplified from the new-build map.</p><p class="note">Ekoln, Dalkarlskärret, Hammarskog and Vreta udde lie outside the glade, a walk away through the woods. They have a map of their own: <a href="#karta-omkring">Around Vreta</a>.</p></div></div>
      <div class="grid auto" style="margin-top:28px">${PLACES.map((pl, i) => `<a class="pc" href="${pl.b ? '#' + pl.b : '#karta'}">${img(pl.ak, pl.n)}<div class="pc-b"><span class="eyebrow">${String(i + 1).padStart(2, '0')}${pl.b ? ' · book ' + BK[pl.b].n : ''}</span><h3>${esc(pl.n)}</h3><p>${esc(pl.t)}</p></div></a>`).join('')}</div>
@@ -1192,7 +1192,7 @@ function station(id, i) {
   return `<article class="station ${i % 2 ? 'flip' : ''}" style="${washVars(id === 'andligheten' ? 'dammen' : b.s)}">
     <div class="strip-v" aria-hidden="true"></div>
     <div class="st-img">${ak(b.ak, w[0])}</div>
-    <div class="st-txt"><span class="st-num">${String(i + 1).padStart(2, '0')}</span>${eb(`Book ${b.n} · ${b.t}`)}<h3 style="font-size:24px">${w[0]}${id === 'cafeet-and-shopen' ? '' : ''}</h3><p>${w[1]}</p>${hand(w[2])}<p style="margin-top:18px"><a class="link" href="#${id}">${i === 0 ? 'Go in' : 'Next room'} ${ARR}</a></p></div>
+    <div class="st-txt"><span class="st-num">${String(i + 1).padStart(2, '0')}</span>${eb(`Book ${b.n} · ${b.t}`)}<h3 style="font-size:24px">${w[0]}${id === 'cafeet-och-shopen' ? '' : ''}</h3><p>${w[1]}</p>${hand(w[2])}<p style="margin-top:18px"><a class="link" href="#${id}">${i === 0 ? 'Go in' : 'Next room'} ${ARR}</a></p></div>
   </article>`;
 }
 function besokBand() {
@@ -1207,7 +1207,7 @@ function besokBand() {
 
 /* ============================================================ rummen (vandringen som sida) */
 async function vRummen() {
-  return `<div class="wrap"><section>${eb('The rooms')}<h1 tabindex="-1">Eight books, eight rooms</h1>
+  return `<div class="wrap"><section>${eb('The Rooms')}<h1 tabindex="-1">Eight books, eight rooms</h1>
    <p class="lead">You come in through the gate by the road and walk through the plot, from the entrance in the south-west past the workshop and the tipi, up to the greenhouse and the pond and on to the guest house and the Cottage. Every room lies where it really lies, and every room has its book.</p>
    ${mapBlock({ id: 'rumkarta' })}
    <div class="walk" style="margin-top:40px">${WALK.map((id, i) => station(id, i)).join('')}</div></section></div>`;
@@ -1217,10 +1217,10 @@ async function vRummen() {
 async function vKarta(sub) {
   const omk = sub === 'omkring';
   return `<div class="wrap"><section>${eb('Map')}<h1 tabindex="-1">${omk ? 'Around Vreta' : 'The plot from above'}</h1>
-   <nav class="sub" aria-label="Maps"><a href="#karta" ${!omk ? 'aria-current="page"' : ''}>Tomten</a><a href="#karta-omkring" ${omk ? 'aria-current="page"' : ''}>Around Vreta</a></nav>
+   <nav class="sub" aria-label="Maps"><a href="#karta" ${!omk ? 'aria-current="page"' : ''}>The plot</a><a href="#karta-omkring" ${omk ? 'aria-current="page"' : ''}>Around Vreta</a></nav>
    ${omk ? omkring() : `<div class="twocol r" style="margin-top:24px"><div>${mapBlock({ id: 'storkarta', sys: 1 })}</div>
      <div><p class="lead">North is up. The road runs along the south-west side, with the lilac hedge and the entrance in the middle. The pond lies in the western part, the Studios in the middle of the plot and the Cottage to the north-east.</p>
-     <p>Switch on <b>systemet</b> to see the water’s path from the roofs to the pond and the tarn, the compost, the meadow and the protected zones. After sunset the map shows the lantern evening by the pond.</p>
+     <p>Switch on <b>the system</b> to see the water’s path from the roofs to the pond and the tarn, the compost, the meadow and the protected zones. After sunset the map shows the lantern evening by the pond.</p>
      <ol class="nlist" style="margin-top:24px">${PLACES.map(p => `<li><b>${esc(p.n)}</b> ${esc(p.t)} ${p.b ? `<a href="#${p.b}">Book ${BK[p.b].n}: ${BK[p.b].t}</a>` : ''}</li>`).join('')}</ol></div></div>`}
   </section></div>`;
 }
@@ -1255,7 +1255,7 @@ async function vIdag() {
   const art = m.plate;
   return `<div class="wash sky" style="${washVars(m.sasong)};min-height:0"><div class="wrap"><div class="sky-in">
      <div>${eb('The day sky · The Calendar Year')}<h1 tabindex="-1" class="sky-big" style="font-weight:300">${p.wd[0].toUpperCase() + p.wd.slice(1)} ${p.d} ${MN[p.m - 1]}</h1>
-       <p class="lead">The sun rises ${s.up ? tfmt(s.up) : '–'} and sets ${s.down ? tfmt(s.down) : '–'}, calculated for Uppsala. ${s.len ? lenfmt(s.len) + ' dagsljus.' : ''}</p></div>
+       <p class="lead">The sun rises ${s.up ? tfmt(s.up) : '–'} and sets ${s.down ? tfmt(s.down) : '–'}, calculated for Uppsala. ${s.len ? lenfmt(s.len) + ' of daylight.' : ''}</p></div>
      <div class="sky-lines"><p><span class="k">The moon</span>${moonSVG(ph.f, 18)} ${ph.name[0].toUpperCase() + ph.name.slice(1)}. We call the full moon ${fullMoonName(fm)}, full ${fmP.d} ${MN[fmP.m - 1]}.</p>
        <p><span class="k">${esc(m.mane)}</span>${esc(m.sub)}</p>
        ${ur ? `<p><span class="k">From The Calendar Year 2027</span>The book begins in January 2027. Until then we show the same month from the book’s year. <a href="#kalenderaret-2027-01">The book’s first month ${ARR}</a></p>` : ''}</div>
@@ -1351,11 +1351,11 @@ async function vSolglanta(sub) {
     <section style="padding-top:0">${eb('The initiative’s eight pillars')}<div class="grid g4">${(R.pelare || []).map(p => `<div class="card alt">${pillarIcon(p[0])}<h3 style="margin-top:10px">${p[0]}</h3><p>${p[1]}</p></div>`).join('')}</div>
       <p style="margin-top:24px">Three verbs carry the work: <b>do, follow, share</b>. And reuse has its own flow:</p>${flow('Find · Rescue · Restore · Adapt · Use')}
       <div style="margin-top:28px">${quote('A planted shrub is the beginning, not the end.', 'Solglänta, ch. 2')}</div></section>
-    <section style="padding-top:0"><div class="twocol"><div>${ak('akvarell-detalj-orangeriet.jpg', 'Orangeriet')}</div>
+    <section style="padding-top:0"><div class="twocol"><div>${ak('akvarell-detalj-orangeriet.jpg', 'The Orangery')}</div>
       <div>${eb('Chapter 13 · In ten years')}<h2>In ten years</h2>${(R.tioar || []).slice(0, 4).map(x => `<p>${x}</p>`).join('')}
       <p class="lead">Great changes seldom begin large. They begin with someone who does something small, for real, and does not stop.</p>${hand('Begin with the small.')}</div></div></section>
     <section style="padding-top:0"><div class="card alt" style="max-width:820px"><h2>Never finished</h2><p>Vreta Solglänta will never be finished. Plants grow, die and are replaced. A place that can change can also adapt. A place that is finished can only decay.</p>${hand('Never finished. Always learning.')}</div>
-      <p style="margin-top:24px" class="quote">"We want to contribute more life than we take up. That goes for a garden. It also goes for a life."<cite>Solglänta, afterword</cite></p></section></div>`;
+      <p style="margin-top:24px" class="quote">“We want to contribute more life than we take up. That goes for a garden. It also goes for a life.”<cite>Solglänta, afterword</cite></p></section></div>`;
   } else if (sub === 'systemet') {
     body = `<div class="wrap">
     <section><div class="twocol r"><div>${eb('Chapter 5 · Food Forest')}<h2>The forest garden – the growing heart of the place</h2>
@@ -1496,7 +1496,7 @@ async function vOdlingen(sub) {
        <div class="row"><button class="btn btn-primary" type="button" id="oknu">What we are doing now</button><span class="oklegend"><span><i class="s" style="background:repeating-linear-gradient(135deg,#C8DCE6 0 5px,#B0CAD6 5px 7px);color:#1C3449">F</i>Raising under cover</span><span><i style="background:repeating-linear-gradient(0deg,#D9E096 0 5px,#C6CC89 5px 7px);color:#2C4A1E">S</i>Sowing or planting out</span><span><i style="background:#D99D36;color:#1C1B17">H</i>Harvest</span></span></div></div>
      <div class="tscroll" tabindex="0" role="region" aria-label="Growing calendar, scroll sideways"><div class="ok" id="ok" role="table" aria-label="Growing calendar, twelve months">
        <div role="row" style="display:contents"><span role="columnheader" class="cr">Crop</span>${MNs.map((m, i) => `<span role="columnheader" class="mh ${i + 1 === p.m ? 'now' : ''}">${m}</span>`).join('')}</div>
-       ${rows.map(r => `<div role="row" style="display:contents" data-okrow data-pl="${esc(r.pl)}" data-now="${r.cells[p.m - 1] ? 1 : 0}"><span role="rowheader" class="cr">${esc(r.n)}</span>${r.cells.map((c, i) => { const cls = c === 's' ? 's' : c === 'p' ? 'p' : c === 'h' ? 'h' : c.includes('p') && c.includes('h') ? 'ph' : c.includes('s') && c.includes('p') ? 'sp' : ''; const lab = c.replace('s', 'F').replace('p', 'S').replace('h', 'H'); return `<span role="cell" class="cell ${cls} ${i + 1 === p.m ? 'now' : ''}" aria-label="${MN[i]}: ${c ? [c.includes('s') ? 'raising under cover' : '', c.includes('p') ? 'sowing or planting out' : '', c.includes('h') ? 'harvest' : ''].filter(Boolean).join(', ') : 'inget'}">${lab}</span>`; }).join('')}</div>`).join('')}
+       ${rows.map(r => `<div role="row" style="display:contents" data-okrow data-pl="${esc(r.pl)}" data-now="${r.cells[p.m - 1] ? 1 : 0}"><span role="rowheader" class="cr">${esc(r.n)}</span>${r.cells.map((c, i) => { const cls = c === 's' ? 's' : c === 'p' ? 'p' : c === 'h' ? 'h' : c.includes('p') && c.includes('h') ? 'ph' : c.includes('s') && c.includes('p') ? 'sp' : ''; const lab = c.replace('s', 'F').replace('p', 'S').replace('h', 'H'); return `<span role="cell" class="cell ${cls} ${i + 1 === p.m ? 'now' : ''}" aria-label="${MN[i]}: ${c ? [c.includes('s') ? 'raising under cover' : '', c.includes('p') ? 'sowing or planting out' : '', c.includes('h') ? 'harvest' : ''].filter(Boolean).join(', ') : 'nothing'}">${lab}</span>`; }).join('')}</div>`).join('')}
      </div></div>
      <p class="small muted" style="margin-top:12px">Colour never carries the meaning alone: R, S and H stand in every cell, and the pattern tells raising under cover from sowing.</p></section>
      <section style="padding-top:0"><div class="twocol"><div>${eb('Saving seed')}${checklist('od-fro', R.fro || [])}</div>
@@ -1515,8 +1515,8 @@ async function vOdlingen(sub) {
      <div class="boxes" id="lador">${(R.lador || []).map((c, i) => `<div class="box" data-i="${i}"><span class="small muted">Bed ${i + 1}</span><b>${strip(c[0])}</b><span class="small">${c[1]}</span></div>`).join('')}</div>
      <div class="row" style="margin-top:14px"><button class="btn btn-ghost" type="button" id="nastaar">Next year ${ARR}</button><span class="small muted" id="arno" aria-live="polite">Year 1</span></div>
      <script type="application/json" id="ladordata">${JSON.stringify(R.lador || [])}<\/script></section>
-    <section style="padding-top:0"><div class="twocol"><div>${ak('akvarell-detalj-orangeriet.jpg', 'Orangeriet')}</div>
-     <div>${eb('Chapter 6')}<h2>Orangeriet</h2>${(R.orangeri_p || []).slice(0, 1).map(x => `<p>${x}</p>`).join('')}
+    <section style="padding-top:0"><div class="twocol"><div>${ak('akvarell-detalj-orangeriet.jpg', 'The Orangery')}</div>
+     <div>${eb('Chapter 6')}<h2>The Orangery</h2>${(R.orangeri_p || []).slice(0, 1).map(x => `<p>${x}</p>`).join('')}
      ${quote('The hardest thing in a Nordic orangery is not the cold. It is the darkness in December.', 'The Garden, ch. 6')}
      <p class="small muted" style="margin-top:12px">About 11 × 5 metres and up to 5 metres high, with red glazing-barred windows and Syrian limestone.</p>
      ${cardList(R.orangeri || [], { cols: 'g2' })}<div style="max-width:220px;margin-top:20px">${plate('vw_citrus', { mini: 1 })}</div></div></div></section>
@@ -1529,7 +1529,7 @@ async function vOdlingen(sub) {
       <p class="note" style="margin-top:20px">Never eat a wild plant you do not know for certain. Do not pick by roads or where dogs are walked, and take only part of what grows.</p></div>
       <div class="grid g3">${['vw_n_ringblomma', 'vw_n_gurkort', 'vw_n_dillpion', 'vw_n_lavendel', 'vw_n_isop', 'vw_n_rosmarin'].map(k => plate(k, { mini: 1 })).join('')}</div></div>
      <p style="margin-top:28px"><a class="btn btn-primary" href="#odlingen-kalendern">The growing calendar: what are we sowing now? ${ARR}</a></p>
-     <p class="quote" style="margin-top:28px">"We do not only grow food. We grow soil, knowledge and relationships – and the food is what shows."<cite>The Garden, efterord</cite></p></section></div>`;
+     <p class="quote" style="margin-top:28px">“We do not only grow food. We grow soil, knowledge and relationships – and the food is what shows.”<cite>The Garden, afterword</cite></p></section></div>`;
   }
   return head + subnav('odlingen', subs, sub || '') + body + nextRoom('odlingen');
 }
@@ -1591,7 +1591,7 @@ async function vVerktygen(sub) {
      <div id="vyar" class="card alt" style="margin-top:14px" role="tabpanel"><p>${(VT.aret || [[0, '']])[0][1]}</p></div>
      <script type="application/json" id="vydata">${JSON.stringify(VT.aret || [])}<\/script></section>
    <section style="padding-top:0"><div class="twocol"><div>${eb('Start here')}${checklist('vt-borja', (VT.borja || []))}</div>
-     <div>${['The tool should be closer than the excuse.', 'A shared tool has more people who care about it.', 'What can be mended has a future.'].map(q => `<p class="quote" style="margin-bottom:18px">”${q}”</p>`).join('')}${hand('Share the tools.')}</div></div>
+     <div>${['The tool should be closer than the excuse.', 'A shared tool has more people who care about it.', 'What can be mended has a future.'].map(q => `<p class="quote" style="margin-bottom:18px">“${q}”</p>`).join('')}${hand('Share the tools.')}</div></div>
      <p class="note" style="margin-top:24px">Hacks with electricity, pressure, fire and lifting always carry the book’s safety lines.</p></section></div>` + nextRoom('verktygen');
 }
 function hackCard(h) {
@@ -1682,7 +1682,7 @@ async function vKoken(sub) {
      <section><div class="twocol"><div>${quote('A kitchen is not a room where food is cooked. It is a room where people meet.', 'The Kitchens, foreword and afterword')}</div><div><p class="lead">${(R.forord || [])[0] || ''}</p></div></div></section>
      <section style="padding-top:0">${eb('Chapter 1')}<h2>Four kitchens and a fire</h2><p class="lead">The Cottage kitchen is for every day, the outdoor kitchen for summer and the studio kitchen for the working day. The orangery kitchen is for feasts. And then the fire, the fifth and oldest kitchen, where the muurikka sizzles for thirty. None of the kitchens was bought new. They have simply been given a new home.</p>
       ${cardList((K.kok || []).concat([['The fireplaces', 'The fifth kitchen – the oldest of them all.']]), { cols: 'g3' })}
-      <p class="quote" style="margin-top:28px">"There are no new kitchens at Vreta. There are only kitchens that have been given a new home."<cite>The Kitchens, ch. 1</cite></p></section>
+      <p class="quote" style="margin-top:28px">“There are no new kitchens at Vreta. There are only kitchens that have been given a new home.”<cite>The Kitchens, ch. 1</cite></p></section>
      <section style="padding-top:0">${eb('Five principles for the kitchens')}${nlist(K.principer || [])}</section>
      <section style="padding-top:0"><div class="twocol"><div>${eb('Chapter 7 · The season decides')}<h2>Let the season decide</h2>
        <p>Nettles and rhubarb in spring, strawberries and herring for Midsummer, tomatoes and crayfish in late summer, apples, mushrooms and juice in autumn, and what is stored and preserved in winter. We do not believe in dogma in the kitchen. We believe in good food cooked with care.</p>
@@ -1692,7 +1692,7 @@ async function vKoken(sub) {
      <section style="padding-top:0">${eb('The spice rack')}<div class="herb">${['vw_n_rosmarin', 'vw_n_dragon', 'vw_n_fankal', 'vw_n_gurkort', 'vw_n_isop', 'vw_n_citronverbena', 'vw_n_kungsmynta', 'vw_n_stappsalvia', 'vw_n_spanskkorvel'].map(k => plate(k, { mini: 1 })).join('')}</div></section>
      <section style="padding-top:0"><div class="twocol"><div>${photo('samvaro-brodet.jpg', 'Hands break bread at the long table')}</div>
       <div>${eb('The cookbook')}<h2>Thirty meals</h2><p class="lead">A cookbook is not a law. What matters is that someone says "come and sit down".</p><a class="btn btn-primary" href="#koken-maltider">Browse the meals ${ARR}</a>${hand('Come and sit down.')}</div></div>
-      <p class="quote" style="margin-top:36px">"It is not the food the guests remember, but how they felt sitting at the table."<cite>The Kitchens, afterword</cite></p></section></div>`;
+      <p class="quote" style="margin-top:36px">“It is not the food the guests remember, but how they felt sitting at the table.”<cite>The Kitchens, afterword</cite></p></section></div>`;
   }
   return head + subnav('koken', subs, sub || '') + body + nextRoom('koken');
 }
@@ -1741,7 +1741,7 @@ function mealPage(K, nr) {
    </article>
    <aside>${plate(MEALPL[m.nr % MEALPL.length], { mini: 1 })}</aside></div></section>
    <section style="padding-top:0">${eb('Laying the table')}<h2>${['No','One','Two','Three','Four','Five','Six','Seven','Eight'][order.filter(k => m.duk[k]).length] || order.filter(k => m.duk[k]).length} layers, in this order</h2><p class="muted">${String(esc(m.dukmeta))}</p>
-    <div class="layers">${order.filter(k => m.duk[k]).map((k, j) => `<div class="layer"><span class="ln">${j + 1}</span><b>${k}</b><p style="margin:0">${esc(m.duk[k])}</p></div>`).join('')}</div>
+    <div class="layers">${order.filter(k => m.duk[k]).map((k, j) => `<div class="layer"><span class="ln">${j + 1}</span><b>${KX[k] || k}</b><p style="margin:0">${esc(m.duk[k])}</p></div>`).join('')}</div>
     ${hand(j2hand(m.kap))}</section>
    <div class="next"><div>${prev ? `<a class="link" href="#koken-maltid-${prev.nr}">← ${prev.nr} · ${esc(prev.titel)}</a>` : ''}</div><div>${nx ? `<a class="link" href="#koken-maltid-${nx.nr}">${nx.nr} · ${esc(nx.titel)} ${ARR}</a>` : `<a class="link" href="#koken-maltider">All meals ${ARR}</a>`}</div></div></div>`;
 }
@@ -1765,9 +1765,9 @@ function dukRender() {
   if (!keys.length) return;
   const step = dukState.length;
   $('#dukval').innerHTML = step < keys.length
-    ? `<span class="eyebrow">Step ${step + 1} of ${keys.length}</span><h3>${keys[step]}</h3><div class="chips">${D[keys[step]].map(v => `<button class="chip" type="button" data-duk="${esc(v)}">${esc(v)}</button>`).join('')}</div>`
+    ? `<span class="eyebrow">Step ${step + 1} of ${keys.length}</span><h3>${KX[keys[step]] || keys[step]}</h3><div class="chips">${D[keys[step]].map(v => `<button class="chip" type="button" data-duk="${esc(v)}">${esc(v)}</button>`).join('')}</div>`
     : `<h3>The table is laid</h3><p>The candles are lit before the guests arrive.</p><button class="btn btn-ghost" type="button" data-dukom>Lay again</button>`;
-  $('#dukbord').innerHTML = `<h3>Your table</h3>${dukState.length ? `<dl class="kv">${dukState.map((v, i) => `<dt>${keys[i]}</dt><dd>${esc(v)}</dd>`).join('')}</dl>` : '<p class="muted">Start with the table.</p>'}${step >= keys.length ? hand('Light the candles.') : ''}`;
+  $('#dukbord').innerHTML = `<h3>Your table</h3>${dukState.length ? `<dl class="kv">${dukState.map((v, i) => `<dt>${KX[keys[i]] || keys[i]}</dt><dd>${esc(v)}</dd>`).join('')}</dl>` : '<p class="muted">Start with the table.</p>'}${step >= keys.length ? hand('Light the candles.') : ''}`;
 }
 document.addEventListener('click', e => {
   const d = e.target.closest('[data-duk]'); if (d) { dukState.push(d.dataset.duk); dukRender(); }
@@ -1815,11 +1815,11 @@ async function vVerkstaderna(sub) {
       <div>${eb('The principles of Vreta’s workshops')}${nlist(R.principer || [])}</div></div></section>
     <section style="padding-top:0"><div class="card alt" style="max-width:860px"><span class="eyebrow">September · pressing day</span><h2>Pressing day</h2>
       <p>One Saturday in September the press is set out. Neighbours come with apples from their own trees, children sort out the rotten ones, someone mills and someone presses. Whoever brings apples takes juice home. Nobody can press a tonne of apples alone. Together it can be done in a Saturday.</p>
-      <p class="small">Juicing day also appears in <a href="#motesplatsen-kurser">the Meeting Place’s harvest festival</a>, i <a href="#kalenderaret-2027-09">September in the Calendar Year</a> and in <a href="#cafeet-and-shopen-menyn">the Café’s apple juice</a>.</p>${hand('A toast to the harvest.')}</div></section>
+      <p class="small">Juicing day also appears in <a href="#motesplatsen-kurser">the Meeting Place’s harvest festival</a>, in <a href="#kalenderaret-2027-09">September in the Calendar Year</a> and in <a href="#cafeet-och-shopen-menyn">the Café’s apple juice</a>.</p>${hand('A toast to the harvest.')}</div></section>
     <section style="padding-top:0"><div class="twocol"><div>${eb('Begin with something small')}<h2>Start here</h2>
       <p>Whittle a butter knife from fresh birch. Mend a garment with visible stitches. Draw the same plant once a month for a year. Craft is often heavy and frustrating, and that is exactly why it means something.</p>
       ${checklist('vs-borja', R.borja || [])}<p data-done="vs-borja" hidden>${hand('Mend what you have.')}</p></div>
-      <div>${drv('verkstaden.jpg', 'The new store with the workshop', { cls: 'photo' })}<p class="quote" style="margin-top:24px">"What is made by hand bears traces of the person who made it – and of the place where it was made."<cite>The Workshops, afterword</cite></p></div></div></section></div>`;
+      <div>${drv('verkstaden.jpg', 'The new store with the workshop', { cls: 'photo' })}<p class="quote" style="margin-top:24px">“What is made by hand bears traces of the person who made it – and of the place where it was made.”<cite>The Workshops, afterword</cite></p></div></div></section></div>`;
   }
   return head + subnav('verkstaderna', subs, sub || '') + body + nextRoom('verkstaderna');
 }
@@ -1828,7 +1828,7 @@ function doorRender(i) {
   $$('[data-door]').forEach(b => { b.setAttribute('aria-selected', String(+b.dataset.door === i)); });
   $('#dorr').innerHTML = `<div class="twocol r card" style="padding:28px"><div>${d.v ? '' : eb('In use')}<h3 style="font-size:24px">${d.t}</h3>
     ${d.flow ? flow(d.flow) : ''}<div style="margin-top:16px">${d.txt.map(x => `<p>${x}</p>`).join('')}</div>
-    <p class="quote" style="font-size:22px">”${esc(d.q)}”</p>${d.h ? hand(d.h) : ''}
+    <p class="quote" style="font-size:22px">“${esc(d.q)}”</p>${d.h ? hand(d.h) : ''}
     <p class="small" style="margin-top:14px"><a href="#motesplatsen-kurser">Courses in the workshop</a></p></div>
     <div>${d.ak ? ak(d.ak, d.t) : ''}${plate(d.pl, { mini: !!d.ak, title: d.id === 'keramik' ? 'The marigold' : undefined })}</div></div>`;
   swapPlates();
@@ -1846,7 +1846,7 @@ async function vMotesplatsen(sub) {
     const tr = (R.kurser_tradgard || []).map(c => ({ t: c[0], x: c[1], typ: 'tradgard', v: 0 }));
     const vk = Object.entries(R.verkstad_kurser || {}).map(([t, p]) => ({ t: kx(t), x: (p || [])[0] || '', typ: 'verkstad', v: t === 'Smide, mat och dryck' }));
     const all = tr.concat(vk);
-    body = `<div class="wrap"><section>${eb('Kurser')}<h2>Courses with your hands in the soil</h2>
+    body = `<div class="wrap"><section>${eb('Courses')}<h2>Courses with your hands in the soil</h2>
      <p class="lead">Forest gardening from the ground up, soil and compost, meadow instead of lawn, pond and water, building with reuse and pruning. Whoever has planted a tree at Vreta has a reason to come back.</p>
      <div class="chips" role="group" aria-label="Course filter"><button class="chip" type="button" data-kf="" aria-pressed="true">All</button><button class="chip" type="button" data-kf="tradgard" aria-pressed="false">The Garden</button><button class="chip" type="button" data-kf="verkstad" aria-pressed="false">The Workshops</button></div>
      <div class="grid auto" id="klist" style="margin-top:20px">${all.map(k => `<div class="card" data-typ="${k.typ}"><span class="eyebrow">${k.typ === 'tradgard' ? 'The Garden' : 'The Workshops'}</span><h3>${String(k.t)}</h3><p>${k.x}</p>${k.v ? '' : '<p class="small" style="margin-top:10px"><a href="#besok-anmal">Register interest</a></p>'}</div>`).join('')}</div></section>
@@ -1888,7 +1888,7 @@ async function vMotesplatsen(sub) {
        ${cardList(R.tipi_cards || [], { cols: 'g2', cls: 'alt' })}
        <p class="small muted" style="margin-top:12px">The tipi holds a gathering circle for about twelve people. During dry spells it becomes a room for lanterns and candles instead.</p></div></div></section>
      <section style="padding-top:0"><div class="twocol"><div>${eb('Hosting · receiving')}${checklist('mo-taemot', R.ta_emot || [])}</div><div>${eb('Shared work days')}<p>${(R.arbetsdagar || [])[0] || ''}</p>
-      <p class="quote" style="margin-top:20px">"A place without meetings is just an address."<cite>The Meeting Place, afterword</cite></p>${hand('Welcome back.')}</div></div>
+      <p class="quote" style="margin-top:20px">“A place without meetings is just an address.”<cite>The Meeting Place, afterword</cite></p>${hand('Welcome back.')}</div></div>
       <div class="row" style="margin-top:28px"><a class="btn btn-primary" href="#motesplatsen-planera">Plan a visit ${ARR}</a></div></section></div>`;
   }
   return head + subnav('motesplatsen', subs, sub || '') + body + nextRoom('motesplatsen');
@@ -1939,7 +1939,7 @@ async function vCafeet(sub) {
   const p = todayP();
   const head = opener({ s: 'gryningen', folio: '06', ak: 'akvarell-detalj-kafeet-butiken.jpg', cap: 'The café and the shop by the entrance', eyebrow: 'The gate · the entrance · book 6 · The Café and the Shop',
     h1: 'The open door of the place', lead: 'Every place has a threshold. At Vreta it lies at the entrance, where the corkscrew hazel we moved from Vallentuna stands with its twisted branches like a gateway of living wood. Here are the café and the shop, and here all ways in begin.', hand: 'Welcome in.' });
-  const subs = [['', 'Grinden'], ['menyn', 'The menu right now'], ['shopen', 'Seven kinds of goods'], ['femton-mil', 'Within 150 kilometres']];
+  const subs = [['', 'The gate'], ['menyn', 'The menu right now'], ['shopen', 'Seven kinds of goods'], ['femton-mil', 'Within 150 kilometres']];
   let body;
   if (sub === 'menyn') {
     const groups = []; let g = null;
@@ -1954,7 +1954,7 @@ async function vCafeet(sub) {
     const st = ['', '', '', '', '', '', ''];
     body = `<div class="wrap"><section>${eb('Chapter 5 · The shop')}<h2>Seven kinds of goods</h2>
      <p class="lead">Plants and seeds, larder, craft from the workshops, antiques and reuse, art from the area, Vreta’s plates and what is made within 150 kilometres. Every object and every jar has an origin you are told about.</p>
-     <p class="quote" style="margin:20px 0">"We do not make the same thing a hundred times. We make a hundred things once."<cite>The Café and the Shop, ch. 5</cite></p>
+     <p class="quote" style="margin:20px 0">“We do not make the same thing a hundred times. We make a hundred things once.”<cite>The Café and the Shop, ch. 5</cite></p>
      <div class="grid auto">${(R.varor || []).map((v, i) => `<div class="card" style="border-top:8px solid var(--tra)">${st[i] === '' ? '' : `<span class="tag">${st[i]}</span>`}<h3 style="margin-top:10px">${v[0]}</h3><p>${v[1]}</p>${/planscher/i.test(v[0]) ? `<p class="small"><a href="#samlingen">To the Collection ${ARR}</a></p>` : ''}</div>`).join('')}</div>
      <p class="small muted" style="margin-top:12px">No online sales, no prices. The plants have plant passports.</p></section>
      <section style="padding-top:0"><div class="twocol"><div>${eb('The label')}<h2>The story comes along</h2>
@@ -1972,21 +1972,21 @@ async function vCafeet(sub) {
       <div class="chips" role="group" aria-label="Product groups">${(R.cirkeln || []).map((c, i) => `<button class="chip" type="button" data-cirk="${i}" aria-pressed="${!i}">${strip(c[0])}</button>`).join('')}</div>
       <div id="cirk" class="card alt" style="margin-top:14px" aria-live="polite"><h3>${(R.cirkeln || [['']])[0][0]}</h3><p>${(R.cirkeln || [['', '']])[0][1]}</p></div>
       <script type="application/json" id="cirkdata">${JSON.stringify(R.cirkeln || [])}<\/script>
-      <p class="quote" style="margin-top:24px">"An ecosystem is not strong because it has many species, but because the species have many relationships."<cite>The Café and the Shop, ch. 11</cite></p>${hand('Near before far.')}</div></div></section></div>`;
+      <p class="quote" style="margin-top:24px">“An ecosystem is not strong because it has many species, but because the species have many relationships.”<cite>The Café and the Shop, ch. 11</cite></p>${hand('Near before far.')}</div></div></section></div>`;
   } else {
     body = `<div class="wrap">
      <section><div class="twocol"><div>${quote('A café by the gate is the open door of the place. You need no errand – it is enough to be thirsty.', 'The Café and the Shop, foreword and afterword')}</div>
       <div><h2>You need no errand</h2><p class="lead">Nobody has to buy anything. Whoever only wants to sit in the sun for a while is just as welcome as whoever shops.</p>${hand('Stay a while.')}</div></div></section>
      <section style="padding-top:0"><div class="twocol r"><div>${eb('The threshold tree')}<h2>The corkscrew hazel</h2>
        <p class="lead">Five metres high and three metres wide, moved from Vallentuna in September: a living landmark at the passage from the road to the place.</p>
-       <p>The café and the shop lie in the cart shed by the entrance. "It does not look like a shop. It looks like a house that has always stood there – and happens to have its door open." Pale limestone, oiled oak, red windows and a roof of glazed tile and sedum.</p></div>
+       <p>The café and the shop lie in the cart shed by the entrance. “It does not look like a shop. It looks like a house that has always stood there – and happens to have its door open.” Pale limestone, oiled oak, red windows and a roof of glazed tile and sedum.</p></div>
       <div>${plate('vw_hazel')}</div></div><div style="margin-top:32px;max-width:860px">${drv('cafe.jpg', 'The café and the shop in the cart shed by the entrance', { cls: 'photo' })}</div></section>
      <section style="padding-top:0">${eb('Five principles for the café and the shop')}${nlist(R.principer || [])}</section>
-     <section style="padding-top:0"><div class="grid g3">${[['menyn', 'The menu right now', 'What belongs to the month is in focus.'], ['shopen', 'Seven kinds of goods', 'From plants to plates.'], ['femton-mil', 'Within 150 kilometres', 'A circle around the place.']].map(([s, t, x]) => `<a class="card" style="text-decoration:none" href="#cafeet-and-shopen-${s}"><h3>${t} ${ARR}</h3><p>${x}</p></a>`).join('')}</div></section>
+     <section style="padding-top:0"><div class="grid g3">${[['menyn', 'The menu right now', 'What belongs to the month is in focus.'], ['shopen', 'Seven kinds of goods', 'From plants to plates.'], ['femton-mil', 'Within 150 kilometres', 'A circle around the place.']].map(([s, t, x]) => `<a class="card" style="text-decoration:none" href="#cafeet-och-shopen-${s}"><h3>${t} ${ARR}</h3><p>${x}</p></a>`).join('')}</div></section>
      <section style="padding-top:0"><div class="twocol"><div>${eb('Open when the sign says so')}<p class="lead">Better weekends and chosen days that always hold than weekdays that sometimes do.</p>${hand('Open when the sign says so.')}</div>
       <div class="herb">${['vw_n_syren', 'vw_n_schersmin', 'vw_n_spirea', 'vw_n_snobollsbuske', 'vw_n_annabelle', 'vw_n_stormhatt'].map(k => plate(k, { mini: 1 })).join('')}</div></div></section></div>`;
   }
-  return head + subnav('cafeet-and-shopen', subs, sub || '') + body + nextRoom('cafeet-and-shopen');
+  return head + subnav('cafeet-och-shopen', subs, sub || '') + body + nextRoom('cafeet-och-shopen');
 }
 function femtonSVG() {
   const L = [['Uppland', 0, -40], ['Southern Uppland', 70, 60], ['Västmanland', -110, 20], ['Södermanland', -10, 120], ['Gästrikland', -40, -150], ['Southern Dalarna', -160, -90], ['Närke', -190, 90], ['Northern Östergötland', -60, 185], ['Åland', 170, -40]];
@@ -2025,12 +2025,12 @@ async function vBoendet(sub) {
      <section><div class="twocol"><div>${quote('A good room to sleep in is a room where you wake a little closer to nature – and a little closer to yourself.', 'Accommodation, foreword and afterword')}</div>
       <div><h2>Twelve beds and a tipi</h2><p class="lead">At Vreta there are twelve beds in the rooms, and the tipi for groups. Every room takes its character from the place where it lies: the Studios in the studio building, the guest house by the oak and the Meditation Loft under the orangery’s glass roof. No room is like another, but all of them say the same thing: someone has cared here.</p></div></div></section>
      <section style="padding-top:0">${eb('The rooms as moods')}<div class="grid g4">
-       ${roomMood('The meditation loft', 1, 'The Orangery · citrus and light', 'The book’s sleeping loft under the glass roof among citrus and figs. "You fall asleep under the stars and wake among lemon trees."', 'akvarell-detalj-orangeriet.jpg', 'vw_n_albertine', 'Fall asleep under the stars.')}
-       ${roomMood('The studios', 0, 'The studios · art and the meadow', 'High ceilings and north light. "Whoever sleeps in the studio wakes to the same light the paintings have grown in."', 'akvarell-detalj-ateljen.jpg', 'vw_n_sarahbernhardt', 'Sleep in north light.')}
+       ${roomMood('The meditation loft', 1, 'The Orangery · citrus and light', 'The book’s sleeping loft under the glass roof among citrus and figs. “You fall asleep under the stars and wake among lemon trees.”', 'akvarell-detalj-orangeriet.jpg', 'vw_n_albertine', 'Fall asleep under the stars.')}
+       ${roomMood('The studios', 0, 'The studios · art and the meadow', 'High ceilings and north light. “Whoever sleeps in the studio wakes to the same light the paintings have grown in.”', 'akvarell-detalj-ateljen.jpg', 'vw_n_sarahbernhardt', 'Sleep in north light.')}
        ${roomMood('The guest house', 0, 'Formerly the store · the oak and the garden', 'Rooms in the spirit of the book: apple green, blue-grey linen and oak from the workshop.', 'akvarell-detalj-langbordet.jpg', 'vw_n_newdawn', 'Wake in the garden.')}
-       ${roomMood('Tipin', 0, 'The meadow and the fire', 'Shared sleeping place for groups. "Nobody lies first or last. Everyone sees one another." Briefing, small fire, extinguisher and fire blanket, and no fire during a fire ban.', '', 'vw_n_kattfot', 'Sleep in a ring.')}
+       ${roomMood('The tipi', 0, 'The meadow and the fire', 'Shared sleeping place for groups. “Nobody lies first or last. Everyone sees one another.” Briefing, small fire, extinguisher and fire blanket, and no fire during a fire ban.', '', 'vw_n_kattfot', 'Sleep in a ring.')}
      </div><p class="small muted" style="margin-top:12px">No booking button. <a href="#besok-anmal">Register interest</a>.</p></section>
-     <section style="padding-top:0"><div class="twocol"><div>${eb('The rooms in numbers')}${table(['Plats', 'Beds'], [['Rooms in the houses', 'Twelve beds'], ['Tipin', 'Shared sleeping place for about twelve']])}
+     <section style="padding-top:0"><div class="twocol"><div>${eb('The rooms in numbers')}${table(['Place', 'Beds'], [['Rooms in the houses', 'Twelve beds'], ['The tipi', 'Shared sleeping place for about twelve']])}
        <h3 style="margin-top:28px">Five principles for accommodation</h3>${nlist(R.principer || [])}</div>
       <div>${eb('What makes a room')}<h2>Linen, wool and warm light</h2><p class="lead">Linen and wool bedding, rugs on wide floorboards, ceramics from the workshop, mirrors with a history and many small light sources with warm light. At night it is dark, because darkness is part of what we want to give.</p>
        ${Object.entries(R.rum || {}).slice(0, 3).map(([h, p]) => `<h4 style="margin-top:18px">${kx(h)}</h4><p>${(p || [])[0] || ''}</p>`).join('')}
@@ -2117,9 +2117,9 @@ async function vAndligheten(sub) {
       <div>${photo('detalj-almstocken-vildvin.jpg', 'The elm log by the pond, clad in Virginia creeper')}<div class="grid g2" style="margin-top:20px">${plate('vw_n_vitnackros', { mini: 1 })}${plate('vw_n_vattenmynta', { mini: 1 })}</div></div></div></section>
      <section style="padding-top:0">${eb('The sacred map of the place')}<h2>Lit places</h2><p>The places with a spiritual dimension are lit, not because they have been consecrated, but because that is how they are used. Stillpoint lies in the forest north-west of Uppsala and is not shown on the plot.</p>
       <div class="twocol r"><div style="padding:16px;border-radius:var(--r-lg)" data-helig>${mapBlock({ id: 'heligkarta', focus: ['dammen', 'tipin', 'orangeriet', 'ateljeerna', 'golen', 'torpet', 'gasthuset', 'verkstaden'] })}</div>
-      <div>${table(['Plats', 'What is there', 'How it is used'], HELIGROWS)}</div></div></section>
+      <div>${table(['Place', 'What is there', 'How it is used'], HELIGROWS)}</div></div></section>
      <section class="skymning" style="border-radius:var(--r-lg);padding:56px 32px;margin-block:24px"><div class="trapp" style="--m:url('${B['trappband.svg']}');height:28px;margin-bottom:28px" aria-hidden="true"></div>
-      <p class="virelai">"When you come to Vreta, do not come to find my voice. Come to find your own."</p><p class="qsrc">– Virelai, The Spirit kap. 10</p>
+      <p class="virelai">“When you come to Vreta, do not come to find my voice. Come to find your own.”</p><p class="qsrc">– Virelai, The Spirit, ch. 10</p>
       <p class="small" style="margin-top:20px;max-width:60ch;color:var(--a-muted)">Virelai is not a deity, not a religion and not a claim about a supernatural being. She is a literary and contemplative companion in conversation.</p></section>
      <section><div class="twocol"><div>${photo('vy-tipi-skymning.jpg', 'The tipi at dusk')}</div>
       <div>${eb('The fire, the water and the tipi')}<p class="lead">We call our tent a tipi because it has that form. But we do not hold Lakota ceremonies, or those of any other Indigenous people, in it unless we have been invited to do so by those who carry the tradition.</p>
@@ -2186,12 +2186,12 @@ async function vKalenderaret(sub) {
     <div>${eb('The sun’s year · calculated for Uppsala')}${table(['Event', 'Date and time', 'Day length'], K.solstand || [])}<div style="margin-top:20px">${table(['Date', 'Sunrise', 'Sunset', 'Daylight'], K.soltabell || [])}</div></div></div></section>
    <section style="padding-top:0"><div class="twocol"><div>${eb('The moon’s year')}${table(['Name', 'Full moon', 'What happens'], K.manar || [])}</div>
     <div>${eb('Nature’s eight seasons')}${cardList(K.arstider || [], { cols: 'g2', cls: 'alt' })}</div></div></section>
-   <section style="padding-top:0">${eb('Vreta’s eight festivals of the year')}<dl class="kv">${(K.fester || []).map(r => `<dt>${r[0]}</dt><dd>${r[1]}${['The winter solstice', 'Candlemas', 'Walpurgis Night', 'Midsummer'].includes(r[0]) ? ' <span class="tag">Fastslagen</span>' : ''}${r[0] === 'Midsummer' ? ' <span class="small muted">Midsummer Eve Friday 25 June, Midsummer Day Saturday 26 June 2027.</span>' : ''}</dd>`).join('')}</dl></section>
+   <section style="padding-top:0">${eb('Vreta’s eight festivals of the year')}<dl class="kv">${(K.fester || []).map(r => `<dt>${r[0]}</dt><dd>${r[1]}${['The winter solstice', 'Candlemas', 'Walpurgis Night', 'Midsummer'].includes(r[0]) ? ' <span class="tag">Fixed feast day</span>' : ''}${r[0] === 'Midsummer' ? ' <span class="small muted">Midsummer Eve Friday 25 June, Midsummer Day Saturday 26 June 2027.</span>' : ''}</dd>`).join('')}</dl></section>
    <section style="padding-top:0">${eb('Four waters')}<h2>Each has its own year</h2><p class="lead">Ekoln is the northernmost bay of Lake Mälaren, a walk away through the woods. The fens in Hammarskog have bird towers and early ice. On the plot are the tarn, the frogs’ nursery, and the pond with the granite boulders, the islet and the grass snake on its stone.</p>
     <div class="grid g2">${(K.fyravatten || []).map(w => `<div class="card ${['The pond', 'The tarn'].includes(w[0]) ? '' : 'alt'}"><h3>${w[0]}</h3><p>${w[1]}</p></div>`).join('')}</div>
     <div class="grid g2" style="margin-top:20px">${ak('akvarell-detalj-dalkarlskarret.jpg', 'The fens, a place of their own', { cls: 'crop' })}${ak('akvarell-detalj-golen.jpg', 'The tarn, on the plot', { cls: 'crop' })}</div></section>
    ${hemBlock()}
-   <section style="padding-top:0"><p class="quote">"Whoever follows a place for a whole year stops asking what day it is. They begin to ask what time it is."<cite>The Calendar Year, afterword</cite></p><p style="margin-top:16px">Welcome back to Vreta – whatever month it is.</p></section></div>`;
+   <section style="padding-top:0"><p class="quote">“Whoever follows a place for a whole year stops asking what day it is. They begin to ask what time it is.”<cite>The Calendar Year, afterword</cite></p><p style="margin-top:16px">Welcome back to Vreta – whatever month it is.</p></section></div>`;
 }
 function svHelg(y, mo, d) {
   // svenska helgdagar and helgaftnar, räknade per år
@@ -2229,12 +2229,12 @@ function kalMonthPage(K, ym) {
   const longHand = m.hand && m.hand.split(' ').length > 5;
   return opener({ s: m.sasong, folio: m.nr, akHtml: `<div style="width:100%;max-width:520px">${plate(m.plate, { ground: isDarkWash(m.sasong) ? null : null })}</div>`, eyebrow: `The Calendar Year · ${esc(m.mane)}`, h1: esc(m.titel), lead: `${esc(m.sub)}. ${m.ingress}`, hand: longHand ? '' : m.hand })
   + `<div class="wrap"><section><div class="twocol r"><div>${eb(m.titel.split(' ')[0] + ' at Vreta')}${m.karaktar.slice(0, 3).map(x => `<p>${x}</p>`).join('')}
-      ${m.citat[0] ? quote(m.citat[0], 'The Calendar Year, ' + m.titel.toLowerCase()) : ''}${longHand ? `<p class="quote" style="margin-top:20px">”${esc(m.hand)}”</p>` : ''}</div>
+      ${m.citat[0] ? quote(m.citat[0], 'The Calendar Year, ' + m.titel.toLowerCase()) : ''}${longHand ? `<p class="quote" style="margin-top:20px">“${esc(m.hand)}”</p>` : ''}</div>
      <div>${m.stat ? `<div class="stat"><span class="big num" style="font-size:48px">${esc(m.stat[0])}</span><p>${m.stat[1]}</p></div>` : ''}${HMON[ym.slice(5)] ? `<div style="margin-top:24px">${drv(HMON[ym.slice(5)][0], HMON[ym.slice(5)][1] + ', one of the place’s fixed holy days')}</div>` : ''}${extra ? `<div style="max-width:260px;margin-top:24px">${extra}</div>` : ''}</div></div></section>
    <section style="padding-top:0">${eb('The calendar')}${calGrid(m.ym, m.dates, m.events)}</section>
    <section style="padding-top:0"><div class="twocol"><div>${eb('Festivals and notable days')}${(m.dates || []).map(e => `<div class="ent"><span class="dt">${e[0]}</span><div><h4>${e[1]}</h4><p>${e[2]}</p></div></div>`).join('')}<p class="small muted">Dates that follow the moon are marked approximate and may shift by a day.</p></div>
      <div>${eb('Suggested events')}${(m.events || []).map(e => `<div class="ent"><span class="dt">${e[0]}</span><div><h4>${e[1]}</h4><p>${e[2].replace(/Anmälan i förväg\./g, 'Register interest.')}</p></div></div>`).join('')}<p class="small muted"><a href="#besok-anmal">Register interest</a>.</p></div></div></section>
-   <section style="padding-top:0"><div class="twocol"><div>${eb('Naturen')}${m.natur.slice(0, 3).map(x => `<p>${x}</p>`).join('')}</div><div>${eb('Himlen')}${m.himmel.map(x => `<p>${x}</p>`).join('')}</div></div></section>
+   <section style="padding-top:0"><div class="twocol"><div>${eb('Nature')}${m.natur.slice(0, 3).map(x => `<p>${x}</p>`).join('')}</div><div>${eb('The sky')}${m.himmel.map(x => `<p>${x}</p>`).join('')}</div></div></section>
    <section style="padding-top:0">${eb('Four waters')}<div class="grid g4">${(m.water || []).map(w => `<div class="card ${['The pond', 'The tarn'].includes(w[0]) ? '' : 'alt'}"><h3>${w[0]}</h3><p>${w[1]}</p></div>`).join('')}</div></section>
    <section style="padding-top:0"><div class="twocol"><div>${eb('To do')}<p class="small muted">Tick off in your own browser. Nothing is sent.</p>${(m.todo || []).map((g, j) => `<details ${j < 2 ? 'open' : ''}><summary>${g[0]}</summary>${checklist('kal-' + m.ym + '-' + j, g[1])}</details>`).join('')}</div>
      <div>${eb('Look out for')}${(m.watch || []).map(w => `<div class="ent" style="grid-template-columns:1fr"><div><h4>${w[0]}</h4><p>${w[1]}</p></div></div>`).join('')}</div></div></section>
@@ -2262,7 +2262,7 @@ async function vAndetag(sub) {
       <select id="rtrad" aria-label="Tradition"><option value="">All traditions</option>${A.register.map(r => `<option>${esc(r.trad)}</option>`).join('')}</select>
       <select id="rman" aria-label="Month"><option value="">All months</option>${MN.map(m => `<option>${m}</option>`).join('')}</select></div><span class="cnt" id="rcnt" aria-live="polite"></span></div>
      <div id="reg">${A.register.map(r => `<details data-trad="${esc(r.trad)}"><summary><span class="tsym" aria-hidden="true" style="color:${(TRAD[r.trad] || ['○', '#6B5E50'])[1]};margin-right:8px">${(TRAD[r.trad] || ['○'])[0]}</span>${esc(r.trad)} <span class="small muted">· ${r.poster.length}</span></summary>${r.intro ? `<p class="small">${r.intro}</p>` : ''}${r.poster.map(x => `<div class="ent" data-reg="${esc((x.n + ' ' + x.d + ' ' + strip(x.x)).toLowerCase())}"><span class="dt">${esc(x.d)}</span><div><h4>${esc(x.n)}</h4><p>${x.x}</p></div></div>`).join('')}</details>`).join('')}</div></section>
-    <section style="padding-top:0"><p class="quote">"The rhythm is not there to make you better. It is there to make you attentive."<cite>The Year’s Breath, afterword</cite></p>${hand('Breathe out. The light is back.')}</section>
+    <section style="padding-top:0"><p class="quote">“The rhythm is not there to make you better. It is there to make you attentive.”<cite>The Year’s Breath, afterword</cite></p>${hand('Breathe out. The light is back.')}</section>
    </div></div>`;
 }
 function filterReg() {
@@ -2340,7 +2340,7 @@ async function vSamlingen(sub) {
   const avd = AVD.find(a => a.join() && a[0] === sub);
   const items = avd ? list.filter(p => p.a === sub) : list;
   const head = avd
-    ? `<div class="strip" style="${washVars(AVDS[sub])};height:14px"></div><div class="wrap"><section style="padding-bottom:16px"><div class="twocol r"><div>${eb('The Collection · section')}<h1 tabindex="-1">${avd[1]}</h1><p class="lead">${items.length} planscher. <a href="#samlingen">The whole collection</a></p></div><div>${ak(AVDAK[sub], avd[1], { cls: 'wide' })}</div></div></section></div>`
+    ? `<div class="strip" style="${washVars(AVDS[sub])};height:14px"></div><div class="wrap"><section style="padding-bottom:16px"><div class="twocol r"><div>${eb('The Collection · section')}<h1 tabindex="-1">${avd[1]}</h1><p class="lead">${items.length} plates. <a href="#samlingen">The whole collection</a></p></div><div>${ak(AVDAK[sub], avd[1], { cls: 'wide' })}</div></div></section></div>`
     : `<div class="wrap"><section style="padding-bottom:16px"><div class="twocol r"><div>${eb('The Collection · plate')}<h1 tabindex="-1">The place’s herbarium</h1>
        <p class="lead">The books’ ${list.length} natural history plates in the spirit of the von Wright brothers, not as copies, but as a tribute to a way of seeing nature: closely, lovingly and with respect for every detail.</p>
        <p class="small muted">By day the plates lie as cream paper on limewash. After sunset they are replaced by the night versions, pale engraved lines in moonlight against night forest.</p></div>
@@ -2350,8 +2350,8 @@ async function vSamlingen(sub) {
     <div class="filters"><div class="row"><label class="sr" for="psok">Search in English or Latin</label><input id="psok" type="search" placeholder="Search in English or Latin" style="width:min(360px,100%)">
      ${avd ? '' : `<select id="pavd" aria-label="Section"><option value="">All sections</option>${AVD.filter(a => Object.values(PL).some(p => p.a === a[0])).map(a => `<option value="${a[0]}">${a[1]}</option>`).join('')}</select>`}
      <select id="pbok" aria-label="Book"><option value="">All books</option>${books.map(b => `<option>${b}</option>`).join('')}</select>
-     ${sub === 'blommor' ? `<select id="pgrp" aria-label="Rum"><option value="">All rooms</option>${Object.entries(GRP).map(([k, v]) => `<option value="${k}">${v}</option>`).join('')}</select>` : ''}
-     <button class="chip" type="button" id="pmanad" aria-pressed="false">Show only the species of the month</button></div><span class="cnt" id="pcnt" aria-live="polite">${items.length} planscher</span></div>
+     ${sub === 'blommor' ? `<select id="pgrp" aria-label="Room"><option value="">All rooms</option>${Object.entries(GRP).map(([k, v]) => `<option value="${k}">${v}</option>`).join('')}</select>` : ''}
+     <button class="chip" type="button" id="pmanad" aria-pressed="false">Show only the species of the month</button></div><span class="cnt" id="pcnt" aria-live="polite">${items.length} plates</span></div>
     <div class="herb" id="herb">${items.map(p => `<div data-p="${p.k}" data-a="${p.a}" data-g="${p.g || ''}" data-b="${esc((p.b || []).join('|'))}" data-s="${esc((p.t + ' ' + p.l + ' ' + (p.alt || []).map(a => a.t + ' ' + a.l).join(' ')).toLowerCase())}">${plate(p.k, { mini: 1 })}</div>`).join('')}</div>
    </section></div>`;
 }
@@ -2360,12 +2360,12 @@ function filterPl() {
   const art = 'vw_' + ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][todayP().m - 1];
   let n = 0;
   $$('#herb [data-p]').forEach(x => { const on = (!q || x.dataset.s.includes(q)) && (!a || x.dataset.a === a) && (!b || x.dataset.b.split('|').includes(b)) && (!g || x.dataset.g === g) && (!mo || x.dataset.p === art); x.hidden = !on; if (on) n++; });
-  $('#pcnt').textContent = n ? `${n} planscher` : 'Nothing here right now. Try another month.';
+  $('#pcnt').textContent = n ? `${n} plates` : 'Nothing here right now. Try another month.';
 }
 document.addEventListener('input', e => { if (['psok', 'pavd', 'pbok', 'pgrp'].includes(e.target.id)) filterPl(); });
 document.addEventListener('change', e => { if (['pavd', 'pbok', 'pgrp'].includes(e.target.id)) filterPl(); });
 document.addEventListener('click', e => { const b = e.target.closest('#pmanad'); if (b) { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); filterPl(); } });
-const BOOKLINK = { 'Solglänta': 'solglanta', 'The Workshops': 'verkstaderna', 'The Meeting Place': 'motesplatsen', 'The Kitchens': 'koken', 'Accommodation': 'boendet', 'The Café and the Shop': 'cafeet-and-shopen', 'The Garden': 'odlingen', 'The Tools': 'verktygen', 'The Spirit': 'andligheten', 'The Calendar Year': 'kalenderaret', 'The Year’s Breath': 'arets-andetag' };
+const BOOKLINK = { 'Solglänta': 'solglanta', 'The Workshops': 'verkstaderna', 'The Meeting Place': 'motesplatsen', 'The Kitchens': 'koken', 'Accommodation': 'boendet', 'The Café and the Shop': 'cafeet-och-shopen', 'The Garden': 'odlingen', 'The Tools': 'verktygen', 'The Spirit': 'andligheten', 'The Calendar Year': 'kalenderaret', 'The Year’s Breath': 'arets-andetag' };
 function vPlansch(hk) {
   const k = PLH[hk]; if (!k) return notFound();
   const p = PL[k];
@@ -2399,15 +2399,15 @@ async function vBockerna() {
 }
 async function vOm() {
   return `<div class="wrap narrow" style="max-width:820px;margin:0 auto"><section>${eb('About')}<h1 tabindex="-1">About</h1>
-   <h2>Three kinds of image</h2><p>The images and texts on the site are created with AI and directed by us. They show the place and the life here as it is meant to be lived. What we offer visitors is what is set out on the page <a href="#besok">Visit</a>.</p><dl class="kv"><dt>Watercolour</dt><dd>The place as a story. Every room begins with a watercolour.</dd><dt>Plansch</dt><dd>Species, plants, animals and tools, drawn in the spirit of the von Wright brothers. At night the same plate is shown as pale lines against night forest.</dd><dt>Photorealistic images</dt><dd>The mood and the togetherness. They show how it feels to be here, not documented occasions. Nobody is named.</dd></dl>
+   <h2>Three kinds of image</h2><p>The images and texts on the site are created with AI and directed by us. They show the place and the life here as it is meant to be lived. What we offer visitors is what is set out on the page <a href="#besok">Visit</a>.</p><dl class="kv"><dt>Watercolour</dt><dd>The place as a story. Every room begins with a watercolour.</dd><dt>Plate</dt><dd>Species, plants, animals and tools, drawn in the spirit of the von Wright brothers. At night the same plate is shown as pale lines against night forest.</dd><dt>Photorealistic images</dt><dd>The mood and the togetherness. They show how it feels to be here, not documented occasions. Nobody is named.</dd></dl>
    <h2 style="margin-top:28px">The map</h2><p>The map is a simplified plan after the new-build map, not to scale: north up, the road along the south-west side with the lilac hedge and the entrance in the middle, the pond in the western part. The surroundings, with Ekoln, the fens, Hammarskog and Vreta udde, have a map of their own.</p>
    <h2>Day, night and follow the sun</h2><p>The site calculates sunrise and sunset for Uppsala in your browser. After sunset it becomes night forest and moonlight, and the plates are replaced by the night versions. Your choice is saved only in your browser.</p>
    <h2>The site collects no personal data</h2><p>There are no forms. You send an expression of interest yourself from your email. Email to hej@vri.earth is received by Vreta Solglänta, used only to reply to you and deleted when the matter is closed. What you write in The Year’s Breath and the lists you tick off stay in your browser.</p></section></div>`;
 }
-function notFound() { return `<div class="wrap"><section style="padding-block:120px"><h1 tabindex="-1">This path is overgrown.</h1><p><a class="btn btn-primary" href="#cafeet-and-shopen">Back to the gate ${ARR}</a></p></section></div>`; }
+function notFound() { return `<div class="wrap"><section style="padding-block:120px"><h1 tabindex="-1">This path is overgrown.</h1><p><a class="btn btn-primary" href="#cafeet-och-shopen">Back to the gate ${ARR}</a></p></section></div>`; }
 
 /* ============================================================ router */
-const ROOMS = { solglanta: vSolglanta, 'cafeet-and-shopen': vCafeet, verkstaderna: vVerkstaderna, verktygen: vVerktygen, motesplatsen: vMotesplatsen, odlingen: vOdlingen, andligheten: vAndligheten, boendet: vBoendet, koken: vKoken, kalenderaret: vKalenderaret, 'arets-andetag': vAndetag, samlingen: vSamlingen, karta: vKarta, besok: vBesok };
+const ROOMS = { solglanta: vSolglanta, 'cafeet-och-shopen': vCafeet, verkstaderna: vVerkstaderna, verktygen: vVerktygen, motesplatsen: vMotesplatsen, odlingen: vOdlingen, andligheten: vAndligheten, boendet: vBoendet, koken: vKoken, kalenderaret: vKalenderaret, 'arets-andetag': vAndetag, samlingen: vSamlingen, karta: vKarta, besok: vBesok };
 let lastRoute = null;
 function parse(h) {
   h = decodeURIComponent(h.replace(/^#/, ''));

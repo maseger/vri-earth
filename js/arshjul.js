@@ -71,7 +71,7 @@
       hemBtn: 'Download the feast days (.ics)', hemMore: 'All dates in the Calendar Year',
       hemFile: 'vreta-feast-days.ics', saved: f => `The calendar file ${f} has been downloaded. Open it to add the feast days to your calendar.`,
       legendFixed: 'fixed feast day', legendFest: 'festival', legendToday: 'today’s date',
-      hemHref: '../#kalenderaret-hem'
+      hemHref: '#kalenderaret-hem'
     }
   };
 
