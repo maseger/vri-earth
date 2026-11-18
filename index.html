@@ -255,8 +255,7 @@ label{font:600 14px/20px var(--sans);color:var(--text-heading)}
 .sky-lines p{margin:0;font-size:15px;line-height:23px}
 .sky-lines .k{font:600 11px/16px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--e);margin-bottom:2px}
 .sky .quote{font-size:clamp(20px,2.2vw,26px);max-width:24ch}
-.wheel{position:absolute;right:calc(var(--gut-r) + var(--tabw) + 4px);top:18px;width:86px;height:86px;opacity:.95}
-@media (max-width:760px){.sky-in{grid-template-columns:minmax(0,1fr)}.sky-lines{border-left:0;padding-left:0;border-top:1px solid color-mix(in srgb,var(--t) 40%,transparent);padding-top:16px}.wheel{width:64px;height:64px;top:14px}.sky .sky-in{padding-top:92px}}
+@media (max-width:760px){.sky-in{grid-template-columns:minmax(0,1fr)}.sky-lines{border-left:0;padding-left:0;border-top:1px solid color-mix(in srgb,var(--t) 40%,transparent);padding-top:16px}}
 
 /* ===================================================== hero och karta */
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:center;padding-block:64px 48px}
@@ -539,6 +538,7 @@ details summary{cursor:pointer;font:600 15px/22px var(--sans);color:var(--text-h
 .print-only{display:none}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://vri.earth/#org", "name": "Vreta Solglänta", "alternateName": "Vreta Regenerative Initiative", "url": "https://vri.earth/", "email": "hej@vri.earth", "logo": "https://vri.earth/img/vreta-mark.svg"}, {"@type": "Place", "@id": "https://vri.earth/#place", "name": "Vreta Solglänta", "description": "En regenerativ plats i en sluten skogsglänta utanför Uppsala, med skogsträdgård, odling, återbruk och verkstäder.", "address": {"@type": "PostalAddress", "addressLocality": "Uppsala", "addressRegion": "Uppsala län", "addressCountry": "SE"}}, {"@type": "WebSite", "@id": "https://vri.earth/#site", "url": "https://vri.earth/", "name": "Vreta Solglänta", "inLanguage": "sv", "publisher": {"@id": "https://vri.earth/#org"}}]}</script>
+<link rel="stylesheet" href="css/arshjul.css"><!-- ÅRSHJUL -->
 </head><body><noscript><div style="max-width:40em;margin:2em auto;padding:0 1em;font-family:Georgia,serif;line-height:1.5"><h1>Vreta Solglänta</h1><p>En regenerativ plats i en skogsglänta utanför Uppsala: skogsträdgård, damm, äng, verkstäder och ett långbord under eken. Sajten behöver JavaScript för att visa böckerna, kartan och kalendern.</p><p>Vi tar emot små grupper. Skriv till Vreta Solglänta · <a href="mailto:hej@vri.earth">hej@vri.earth</a>.</p><p><a href="/en/">In English</a></p></div></noscript>
 
 <a class="skip" href="#innehall" id="skiplink">Till innehållet</a>
@@ -577,6 +577,7 @@ details summary{cursor:pointer;font:600 15px/22px var(--sans);color:var(--text-h
   <span class="eyebrow">De elva böckerna</span>
   <div class="spine-list" id="spinelist"></div>
 </div></div>
+<script src="js/arshjul.js"></script><!-- ÅRSHJUL -->
 <script>
 "use strict";
 /* ============================================================ bilder (asset store, ordagrant) */
@@ -1105,17 +1106,6 @@ function stund(d = new Date()) {
   const h = +d.toLocaleString('sv-SE', { timeZone: 'Europe/Stockholm', hour: '2-digit', hour12: false });
   if (night()) return 2; if (h < 10) return 0; if (h >= 11 && h <= 14) return 1; return h < 11 ? 0 : (sunIsDown() ? 2 : 1);
 }
-function wheel(curM) {
-  let s = '';
-  for (let i = 0; i < 12; i++) {
-    const a0 = (i / 12) * 2 * Math.PI - Math.PI / 2, a1 = ((i + 1) / 12) * 2 * Math.PI - Math.PI / 2;
-    const R = 42, r = 26, c = 44;
-    const p = (a, rr) => `${(c + rr * Math.cos(a)).toFixed(1)},${(c + rr * Math.sin(a)).toFixed(1)}`;
-    const k = SE[MN[i]];
-    s += `<a href="#kalenderaret-2027-${String(i + 1).padStart(2, '0')}" aria-label="${MN[i]} i Kalenderåret"><path d="M${p(a0, R)} A${R},${R} 0 0 1 ${p(a1, R)} L${p(a1, r)} A${r},${r} 0 0 0 ${p(a0, r)}Z" fill="${k[0]}" stroke="${i + 1 === curM ? '#F8F2E6' : 'rgba(0,0,0,.25)'}" stroke-width="${i + 1 === curM ? 2.5 : .6}"/></a>`;
-  }
-  return `<svg class="wheel" viewBox="0 0 88 88" role="group" aria-label="Årshjulet: tolv månader. Välj en månad.">${s}<text x="44" y="48" text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">${MNs[curM - 1]}</text></svg>`;
-}
 
 /* ============================================================ startsidan */
 async function vHome() {
@@ -1149,7 +1139,6 @@ async function vHome() {
       <p><span class="k">${st[0]}</span>${st[1]}</p>
       <p><a class="link" href="#i-dag">Hela dagen ${ARR}</a>${ur ? ` <span class="small">Ur Kalenderåret 2027</span>` : ''}</p></div>`;
   const sky = `<section class="sky wash" style="${n ? washVars('himlen') : washVars(curMonthSeason())};padding:0" aria-label="Himlen över Vreta just nu">
-     ${wheel(p.m)}
      <div class="wrap"><div class="sky-in"><div>${skyLeft}</div>${skyRight}</div></div></section>`;
   const hero = `<div class="wrap"><div class="hero">
      <div>${eb('Vreta Solglänta · utanför Uppsala, nära Ekoln')}
@@ -1189,7 +1178,10 @@ async function vHome() {
      <div class="grid g2">${plate(art, { mini: 1 })}${artK === art && PL[wf] ? plate(wf, { mini: 1, title: 'Veckans växt: ' + plT(wf) }) : ''}</div>
    </div></div></section>`;
   const besok = besokBand();
-  return sky + hero + `<hr class="rule">` + places + walk + mark + sam + besok;
+  /* ÅRSHJUL START */
+  const arshjul = window.Arshjul ? Arshjul.html({ lang: 'sv', kalender: K, today: p, washVars, seasons: SE, icsFile, hogtider: hogtidLista(), href: ym => '#kalenderaret-' + ym }) : `<hr class="rule">`;
+  /* ÅRSHJUL SLUT */
+  return sky + hero + arshjul + places + walk + mark + sam + besok;
 }
 function station(id, i) {
   const b = BK[id], w = WALKTXT[id];
@@ -2165,8 +2157,9 @@ function icsFile(list) {
   return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(L.join('\r\n'));
 }
 function gcal(t, a, b) { return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(t + ' på Vreta')}&dates=${a.replace(/-/g, '')}/${b.replace(/-/g, '')}&details=${encodeURIComponent('Ur Kalenderåret.')}`; }
+function hogtidLista() { return HOGTIDER.slice(0, 4).map(h => [h[0], h[1], h[2], h[0] === 'Midsommar' ? 'Midsommar 21–26 juni 2027. Midsommarafton fredag 25 juni\\, midsommardagen lördag 26 juni.' : '']); }
 function hemBlock() {
-  const lst = HOGTIDER.slice(0, 4).map(h => [h[0], h[1], h[2], h[0] === 'Midsommar' ? 'Midsommar 21–26 juni 2027. Midsommarafton fredag 25 juni\\, midsommardagen lördag 26 juni.' : '']);
+  const lst = hogtidLista();
   const txt = 'Vintersolståndet 21–22 december 2026\nKyndelsmäss 7 februari 2027\nValborg 30 april 2027\nMidsommar 21–26 juni 2027 (midsommarafton 25 juni, midsommardagen 26 juni)';
   return `<section id="hem">${eb('Ta med året hem')}<h2>Platsens fyra högtider</h2>
    <p class="lead">Vintersolståndet 21–22 december, Kyndelsmäss 7 februari, Valborg 30 april och Midsommar 21–26 juni. Lägg datumen i din egen kalender. Filen hämtar du direkt härifrån. Knappen för Google Kalender öppnar Googles tjänst, och där gäller Googles villkor.</p>
