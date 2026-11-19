@@ -16,13 +16,15 @@ html.entre-lock,html.entre-lock body{overflow:hidden}
 .en-hero picture,.en-hero img.en-bg{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
 .en-hero img.en-bg{object-fit:cover;object-position:50% 40%;filter:saturate(.9)}
 .en-hero::after{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg,rgba(20,38,31,.35) 0%,rgba(20,38,31,.62) 32%,rgba(20,38,31,.9) 58%,#14261F 88%)}
-.en-skip{position:absolute;top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));
+  background:linear-gradient(180deg,rgba(20,38,31,.4) 0%,rgba(20,38,31,.7) 25%,rgba(20,38,31,.9) 50%,#14261F 85%)}
+.en-top{position:absolute;top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;max-width:calc(100% - 190px)}
+.en-skip,.en-ljud{
   display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(239,230,214,.55);
   background:rgba(20,38,31,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#EFE6D6;font:600 13px/1 var(--sans);letter-spacing:.04em;cursor:pointer}
-.en-skip:hover{border-color:#E6B65A}
+.en-skip:hover,.en-ljud:hover{border-color:#E6B65A}
+.en-ljud[aria-pressed="true"]{border-color:#E6B65A}
 .en-logo{position:absolute;top:max(18px,env(safe-area-inset-top,0px));left:max(20px,env(safe-area-inset-left,0px));width:150px;height:auto}
-.en-eyebrow{font:600 12px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#E6B65A;margin:0 0 14px}
+.en-eyebrow{font:600 12px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#F8F2E6;margin:0 0 14px;text-shadow:0 1px 8px rgba(20,38,31,.95),0 0 2px rgba(20,38,31,.9)}
 .en-h1{font:400 clamp(40px,7.4vw,84px)/1.02 var(--serif);letter-spacing:-.015em;margin:0;max-width:15ch;color:#F8F2E6}
 .en-h1 i{font-style:italic}
 .entre .en-h1:focus,.entre .en-h1:focus-visible{outline:none;box-shadow:none}
@@ -98,8 +100,8 @@ html.entre-lock,html.entre-lock body{overflow:hidden}
 .en-now .ti{min-width:0}
 .en-now .ti b{display:block;font:italic 400 18px/1.2 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#F8F2E6}
 .en-now .ti span{display:block;font:500 11px/1.35 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#C9C0B0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.en-now.waiting .ti span .hint{color:#E6B65A}
+.en-now .ti span .hint{display:inline;color:#E6B65A}
 .en-now .tm{font:400 12px/1 var(--sans);color:#C9C0B0;white-space:nowrap;font-variant-numeric:tabular-nums}
 .en-now .pr{position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,#E6B65A,#B5523C)}
-@media(max-width:480px){.en-now .tm{display:none}.en-now{grid-template-columns:auto 1fr}}
+@media(max-width:480px){.en-now .tm{display:none}.en-now{grid-template-columns:auto 1fr}.en-top{max-width:calc(100% - 40px);top:64px}.en-logo{width:120px}}
 @media(prefers-reduced-motion:reduce){.entre,.en-now{transition:none}.en-status::before,.en-now.waiting .pp{animation:none}}
