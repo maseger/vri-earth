@@ -87,7 +87,7 @@
       
       '<div class="en-wrap"><p class="en-eyebrow">' + T.eyebrow + '</p><h1 class="en-h1" id="en-h1" tabindex="-1">' + T.h1 + '</h1>' +
       '<p class="en-lead">' + T.lead + '</p><p class="en-status">' + T.status + '</p></div>' +
-      '<div class="en-top"><button type="button" class="en-ljud" aria-pressed="false">' + T.mute + '</button>' +
+      '<div class="en-top"><button type="button" class="en-ljud">' + T.mute + '</button>' +
       '<button type="button" class="en-skip" data-en-close>' + T.skip + ' <span aria-hidden="true">→</span></button></div>' +
       '</section>' +
       '<section class="en-vag" aria-labelledby="en-h2a"><div class="en-wrap"><h2 class="en-h2" id="en-h2a">' + T.h2 + '</h2>' +
@@ -109,14 +109,14 @@
     return el;
   }
 
-  var plate, now, audio, lastFocus = null, started = false, fadeRaf = 0, userPaused = false, skipPP = false;
+  var plate, now, audio, lastFocus = null, started = false, fadeRaf = 0, userPaused = false, skipPP = false, endWait = null;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var fmt = function (s) { return isFinite(s) ? Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0') : '0:00'; };
 
   function mark() {
     now.classList.toggle('playing', !audio.paused);
     $('.pp', now).setAttribute('aria-label', audio.paused ? T.play : T.pause);
-    var lb = plate && $('.en-ljud', plate); if (lb) { var off = audio.paused || audio.muted; lb.textContent = off ? T.unmute : T.mute; lb.setAttribute('aria-pressed', String(off)); }
+    var lb = plate && $('.en-ljud', plate); if (lb) { var off = audio.paused || audio.muted; lb.textContent = off ? T.unmute : T.mute; lb.classList.toggle('av', off); }
   }
   function fadeIn(ms) {
     ms = ms || 5000; cancelAnimationFrame(fadeRaf);
@@ -146,7 +146,8 @@
         fadeIn();
         if (onPP) skipPP = true;
       };
-      var done = function () { waiting(false); ['pointerdown', 'keydown', 'touchstart'].forEach(function (t) { removeEventListener(t, go, true); }); };
+      var done = function () { endWait = null; waiting(false); ['pointerdown', 'keydown', 'touchstart'].forEach(function (t) { removeEventListener(t, go, true); }); };
+      endWait = function () { done(); userPaused = true; audio.pause(); audio.muted = false; mark(); };
       ['pointerdown', 'keydown', 'touchstart'].forEach(function (t) { addEventListener(t, go, true); });
     };
     if (p && p.then) p.then(function () { fadeIn(); mark(); }).catch(blocked); else { fadeIn(); mark(); }
@@ -163,6 +164,7 @@
   }
   function close(toHash) {
     try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+    if (endWait) endWait();
     plate.classList.remove('open');
     document.documentElement.classList.remove('entre-lock');
     setTimeout(function () { plate.hidden = true; }, 700);

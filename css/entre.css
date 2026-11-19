@@ -22,7 +22,7 @@ html.entre-lock,html.entre-lock body{overflow:hidden}
   display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(239,230,214,.55);
   background:rgba(20,38,31,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#EFE6D6;font:600 13px/1 var(--sans);letter-spacing:.04em;cursor:pointer}
 .en-skip:hover,.en-ljud:hover{border-color:#E6B65A}
-.en-ljud[aria-pressed="true"]{border-color:#E6B65A}
+.en-ljud.av{border-color:#E6B65A}
 .en-logo{position:absolute;top:max(18px,env(safe-area-inset-top,0px));left:max(20px,env(safe-area-inset-left,0px));width:150px;height:auto}
 .en-eyebrow{font:600 12px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#F8F2E6;margin:0 0 14px;text-shadow:0 1px 8px rgba(20,38,31,.95),0 0 2px rgba(20,38,31,.9)}
 .en-h1{font:400 clamp(40px,7.4vw,84px)/1.02 var(--serif);letter-spacing:-.015em;margin:0;max-width:15ch;color:#F8F2E6}
@@ -30,7 +30,7 @@ html.entre-lock,html.entre-lock body{overflow:hidden}
 .entre .en-h1:focus,.entre .en-h1:focus-visible{outline:none;box-shadow:none}
 .en-lead{font:400 clamp(17px,2.1vw,20px)/1.6 var(--sans);color:#EFE6D6;max-width:58ch;margin:22px 0 0}
 .en-status{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:8px 14px;border-radius:999px;border:1px solid rgba(230,182,90,.6);font:500 13px/1.3 var(--sans);color:#F8F2E6}
-.en-status::before{content:"";width:9px;height:9px;border-radius:50%;background:#E6B65A;box-shadow:0 0 0 0 rgba(230,182,90,.6);animation:en-puls 2.4s ease-out infinite}
+.en-status::before{content:"";width:9px;height:9px;border-radius:50%;background:#E6B65A}
 @keyframes en-puls{0%{box-shadow:0 0 0 0 rgba(230,182,90,.55)}70%{box-shadow:0 0 0 10px rgba(230,182,90,0)}100%{box-shadow:0 0 0 0 rgba(230,182,90,0)}}
 
 /* vägen framåt */
