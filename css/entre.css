@@ -1,0 +1,105 @@
+/* Entré – introplattan: Vreta Solglänta som vision i uppförande, med vägen framåt i sex faser.
+   Designsystem Vreta Regenerative Initiative (Skogsgrön, Rost, Kalk, Ockra, Mossa; Sora och Fraunces).
+   Spelaren följer Vreta Sound System: signaturmelodin startar och tonas in över fem sekunder. */
+.entre{position:fixed;inset:0;z-index:300;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+  background:#14261F;color:#EFE6D6;font-family:var(--sans);opacity:0;visibility:hidden;transition:opacity .7s ease,visibility 0s linear .7s}
+.entre.open{opacity:1;visibility:visible;transition:opacity .7s ease}
+.entre[hidden]{display:block!important}
+html.entre-lock,html.entre-lock body{overflow:hidden}
+.entre *{box-sizing:border-box}
+.entre a{color:inherit}
+.entre :focus-visible{outline:2px solid #E6B65A;outline-offset:3px;border-radius:4px}
+.en-wrap{max-width:1080px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left,0px))}
+
+/* toppen: akvarellen tonar ut i nattskogen */
+.en-hero{position:relative;min-height:min(92svh,860px);display:flex;align-items:flex-end;padding:96px 0 56px;isolation:isolate}
+.en-hero picture,.en-hero img.en-bg{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.en-hero img.en-bg{object-fit:cover;object-position:50% 40%;filter:saturate(.9)}
+.en-hero::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(20,38,31,.35) 0%,rgba(20,38,31,.62) 32%,rgba(20,38,31,.9) 58%,#14261F 88%)}
+.en-skip{position:absolute;top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));
+  display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(239,230,214,.55);
+  background:rgba(20,38,31,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#EFE6D6;font:600 13px/1 var(--sans);letter-spacing:.04em;cursor:pointer}
+.en-skip:hover{border-color:#E6B65A}
+.en-logo{position:absolute;top:max(18px,env(safe-area-inset-top,0px));left:max(20px,env(safe-area-inset-left,0px));width:150px;height:auto}
+.en-eyebrow{font:600 12px/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#E6B65A;margin:0 0 14px}
+.en-h1{font:400 clamp(40px,7.4vw,84px)/1.02 var(--serif);letter-spacing:-.015em;margin:0;max-width:15ch;color:#F8F2E6}
+.en-h1 i{font-style:italic}
+.entre .en-h1:focus,.entre .en-h1:focus-visible{outline:none;box-shadow:none}
+.en-lead{font:400 clamp(17px,2.1vw,20px)/1.6 var(--sans);color:#EFE6D6;max-width:58ch;margin:22px 0 0}
+.en-status{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:8px 14px;border-radius:999px;border:1px solid rgba(230,182,90,.6);font:500 13px/1.3 var(--sans);color:#F8F2E6}
+.en-status::before{content:"";width:9px;height:9px;border-radius:50%;background:#E6B65A;box-shadow:0 0 0 0 rgba(230,182,90,.6);animation:en-puls 2.4s ease-out infinite}
+@keyframes en-puls{0%{box-shadow:0 0 0 0 rgba(230,182,90,.55)}70%{box-shadow:0 0 0 10px rgba(230,182,90,0)}100%{box-shadow:0 0 0 0 rgba(230,182,90,0)}}
+
+/* vägen framåt */
+.en-vag{padding:40px 0 24px}
+.en-h2{font:400 clamp(32px,5vw,52px)/1.08 var(--serif);margin:0;color:#F8F2E6}
+.en-h2 i{font-style:italic}
+.en-intro{max-width:60ch;color:#D9D0C0;font-size:17px;line-height:1.6;margin:14px 0 0}
+.en-faser{list-style:none;margin:44px 0 0;padding:0;position:relative}
+.en-faser::before{content:"";position:absolute;left:23px;top:8px;bottom:8px;width:2px;
+  background:repeating-linear-gradient(180deg,rgba(230,182,90,.75) 0 7px,transparent 7px 14px)}
+.en-fas{position:relative;display:grid;grid-template-columns:48px 1fr;gap:20px;padding:0 0 34px}
+.en-fas:last-child{padding-bottom:0}
+.en-nr{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  font:500 20px/1 var(--serif);color:#14261F;background:var(--c,#E6B65A);box-shadow:0 0 0 6px #14261F}
+.en-kort{border:1px solid rgba(239,230,214,.18);border-radius:16px;padding:20px 22px 22px;background:rgba(31,53,44,.72)}
+.en-fas[data-nu] .en-kort{border-color:rgba(230,182,90,.75);background:rgba(52,73,62,.85)}
+.en-kort h3{font:400 25px/1.2 var(--serif);margin:0;color:#F8F2E6}
+.en-kort .en-ur{font:italic 400 16px/1.45 var(--serif);color:#E6B65A;margin:6px 0 0}
+.en-kort p{margin:10px 0 0;font-size:15.5px;line-height:1.62;color:#E2D9C9}
+.en-chip{display:inline-block;margin-top:14px;padding:4px 11px;border-radius:12px;font:600 11.5px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid currentColor;color:#C9D4AE}
+.en-chip.nu{color:#14261F;background:#E6B65A;border-color:#E6B65A}
+.en-chip.sen{color:#B9B0A1}
+.en-nu-lbl{display:block;font:600 11.5px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#E6B65A;margin:0 0 8px}
+@media(min-width:900px){
+  .en-faser::before{left:50%;margin-left:-1px}
+  .en-fas{grid-template-columns:1fr 48px 1fr;gap:28px;padding-bottom:22px}
+  .en-fas .en-nr{grid-column:2;grid-row:1}
+  .en-fas .en-kort{grid-column:1;grid-row:1}
+  .en-fas:nth-child(even) .en-kort{grid-column:3}
+}
+
+/* R-principerna */
+.en-r{padding:56px 0 8px}
+.en-rlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;list-style:none;margin:28px 0 0;padding:0}
+.en-rlist li{border:1px solid rgba(239,230,214,.18);border-radius:14px;padding:16px 18px;background:rgba(31,53,44,.55)}
+.en-rlist b{display:block;font:400 21px/1.2 var(--serif);color:#F8F2E6}
+.en-rlist b span{font:500 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#E6B65A;margin-left:8px}
+.en-rlist p{margin:6px 0 0;font-size:14.5px;line-height:1.55;color:#D9D0C0}
+.en-agil{margin:26px 0 0;max-width:62ch;color:#E2D9C9;font-size:16px;line-height:1.62}
+
+/* slutet */
+.en-slut{padding:56px 0 140px;text-align:center}
+.en-slut .en-h2{max-width:20ch;margin:0 auto}
+.en-slut p.en-ton{max-width:56ch;margin:16px auto 0;color:#D9D0C0;font-size:16.5px;line-height:1.6}
+.en-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+.en-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;font:600 15px/1 var(--sans);text-decoration:none;cursor:pointer;border:1px solid transparent}
+.en-btn.p{background:#E6B65A;color:#14261F}
+.en-btn.p:hover{background:#F0C46C}
+.en-btn.s{border-color:rgba(239,230,214,.55);color:#F8F2E6;background:transparent}
+.en-btn.s:hover{border-color:#E6B65A}
+.en-ai{margin:34px auto 0;font-size:12.5px;line-height:1.5;color:#B9B0A1;max-width:60ch}
+.en-ai a{color:#EFE6D6}
+
+/* spelaren – samma form som Vreta Sound System */
+.en-now{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:310;transform:translate(-50%,160%);
+  width:min(560px,calc(100% - 24px));display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
+  padding:8px 14px 8px 8px;border:1px solid rgba(239,230,214,.25);border-radius:999px;background:rgba(20,38,31,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#EFE6D6;font-family:var(--sans);
+  box-shadow:0 12px 32px rgba(0,0,0,.28);transition:transform .7s cubic-bezier(.2,.7,.2,1);overflow:hidden}
+.en-now.on{transform:translate(-50%,0)}
+.en-now .pp{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:0;background:#EFE6D6;cursor:pointer;padding:0}
+.en-now .pp::before{content:"";margin-left:4px;border-left:13px solid #14261F;border-block:8px solid transparent}
+.en-now.playing .pp::before{margin:0;width:12px;height:14px;border:0;background:linear-gradient(90deg,#14261F 0 4px,transparent 4px 8px,#14261F 8px 12px)}
+.en-now.waiting .pp{animation:en-slag 1.1s cubic-bezier(.2,.7,.2,1) infinite}
+@keyframes en-slag{0%{box-shadow:0 0 0 0 rgba(230,182,90,.7)}80%{box-shadow:0 0 0 12px rgba(230,182,90,0)}100%{box-shadow:0 0 0 0 rgba(230,182,90,0)}}
+.en-now .ti{min-width:0}
+.en-now .ti b{display:block;font:italic 400 18px/1.2 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#F8F2E6}
+.en-now .ti span{display:block;font:500 11px/1.35 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#C9C0B0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.en-now.waiting .ti span .hint{color:#E6B65A}
+.en-now .tm{font:400 12px/1 var(--sans);color:#C9C0B0;white-space:nowrap;font-variant-numeric:tabular-nums}
+.en-now .pr{position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,#E6B65A,#B5523C)}
+@media(max-width:480px){.en-now .tm{display:none}.en-now{grid-template-columns:auto 1fr}}
+@media(prefers-reduced-motion:reduce){.entre,.en-now{transition:none}.en-status::before,.en-now.waiting .pp{animation:none}}
