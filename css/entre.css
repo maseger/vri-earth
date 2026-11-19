@@ -149,3 +149,5 @@ html.entre-lock,html.entre-lock body{overflow:hidden}
 .en-now .pr{position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,#E6B65A,#B5523C)}
 @media(max-width:480px){.en-now .tm{display:none}.en-now{grid-template-columns:auto 1fr}.en-top{max-width:calc(100% - 40px);top:64px}.en-logo{width:120px}}
 @media(prefers-reduced-motion:reduce){.entre,.en-now,.en-stig-mask,.har-stig .en-nr,.en-faser .en-fas{transition:none}.en-faser.en-anim .en-fas{opacity:1;transform:none}.en-rp{animation:none}.en-rk,.en-rpil{transition:none}.en-status::before,.en-now.waiting .pp{animation:none}}
+
+.entre{scroll-padding-bottom:96px}
